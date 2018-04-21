@@ -515,7 +515,7 @@ def _setdefault_via_pathlist(external_dict,path_list,**kwargs):
             this = this.__getitem__(key)
     return(external_dict)
 
-def __setitem_via_pathlist(external_dict,path_list,value,**kwargs):
+def _setitem_via_pathlist(external_dict,path_list,value,**kwargs):
     '''
         y = {'c': {'b': {}}}
         _setitem_via_pathlist(y,['c','b'],200)
