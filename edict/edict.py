@@ -1222,9 +1222,9 @@ class Edict():
             #very special in __getitem__
             pl = list(args)
         return(_getitem_via_pathlist(self.dict,pl))
-    def cond_select_via_key(self,cond_match=None,**kwargs)
+    def cond_select_via_key(self,cond_match=None,**kwargs):
         return(_cond_select_via_key(self.dict,cond_match=None,**kwargs))
-    def cond_select_via_value(self,cond_match=None,**kwargs)
+    def cond_select_via_value(self,cond_match=None,**kwargs):
         return(_cond_select_via_value(self.dict,cond_match=None,**kwargs))
     def __setitem__(self,*args,**kwargs):
         #very special in __setitem__
