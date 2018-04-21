@@ -1189,10 +1189,10 @@ class Edict():
         return((self.kdfs(),self.vdfs()))
     def kdescmat(self):
         kdescm,vdescm = _scan(self.dict)
-        return(kdescmat)
+        return(kdescm)
     def vdescmat(self):
         kdescm,vdescm = _scan(self.dict)
-        return(vdescmat)
+        return(vdescm)
     def kvdescmats(self):
         return(_scan(self.dict))
     def include_pathlist(self,*args,**kwargs):
