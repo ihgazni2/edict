@@ -25,6 +25,14 @@
 ├──13. [update_intersection](edict/Images/update_intersection.0.png)  <br>
 ├──14. [update\<0\>](edict/Images/update.0.png)  <br>
 ├──15. [update\<1\>](edict/Images/update.1.png)  <br>
+├──16. [union](edict/Images/union.0.png)  <br>
+├──17. [intersection](edict/Images/intersection.0.png)  <br>
+├──18. [diff](edict/Images/diff.0.png)  <br>
+├──19. [complement](edict/Images/complement.0.png)  <br>
+├──0. [](edict/Images/.0.png)  <br>
+├──0. [](edict/Images/.0.png)  <br>
+├──0. [](edict/Images/.0.png)  <br>
+├──0. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
