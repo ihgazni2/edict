@@ -1309,9 +1309,9 @@ class Edict():
             deepcopy = 0
         d3 = _uniqualize(self.dict)
         if(deepcopy):
-            self.dict = d3
-        else:
             pass
+        else:
+            self.dict = d3
         return(Edict(d3))
     def extend(self,ed2,**kwargs):
         if('deepcopy' in kwargs):
@@ -1320,9 +1320,9 @@ class Edict():
             deepcopy = 0
         d3 = _extend(self.dict,ed2.dict,**kwargs)
         if(deepcopy):
-            self.dict = d3
-        else:
             pass
+        else:
+            self.dict = d3
         return(Edict(d3))
     def comprise(self,ed2,**kwargs):
         cond = _comprise(self.dict,ed2.dict)
@@ -1334,9 +1334,9 @@ class Edict():
             deepcopy = 0
         d3 = _update_intersection(self.dict,ed2.dict,**kwargs)
         if(deepcopy):
-            self.dict = d3
-        else:
             pass
+        else:
+            self.dict = d3
         return(Edict(d3))
     def update(self,ed2,**kwargs):
         if('deepcopy' in kwargs):
@@ -1345,9 +1345,9 @@ class Edict():
             deepcopy = 0
         d3 = _update(self.dict,ed2.dict,**kwargs)
         if(deepcopy):
-            self.dict = d3
-        else:
             pass
+        else:
+            self.dict = d3
         return(Edict(d3))
     #################################
     #################################
