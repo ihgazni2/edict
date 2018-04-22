@@ -1214,7 +1214,6 @@ class Edict():
         return(self.dict.__str__())
     def __getitem__(self,*args,**kwargs):
         #very special in __getitem__
-        print(args)
         if(isinstance(args[0],tuple)):
             #very special in __getitem__
             pl = list(args[0])
@@ -1228,7 +1227,6 @@ class Edict():
         return(_cond_select_via_value(self.dict,cond_match=None,**kwargs))
     def __setitem__(self,*args,**kwargs):
         #very special in __setitem__
-        print(args)
         if(isinstance(args[0],tuple)):
             #very special in __getitem__
             pl = list(args[0])
@@ -1244,7 +1242,6 @@ class Edict():
         return(_setdefault_via_pathlist(self.dict,list(args)))
     def __delitem__(self,*args,**kwargs):
         #very special in __getitem__
-        print(args)
         if(isinstance(args[0],tuple)):
             #very special in __getitem__
             pl = list(args[0])
