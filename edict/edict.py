@@ -156,7 +156,7 @@ def dict_mirror(d,**kwargs):
         sort_func = kwargs['sort_func']
     else:
         sort_func = sorted
-    vl = list(dict.values())
+    vl = list(d.values())
     uvl = elel.uniqualize(vl)
     for v in uvl:
         kl = _keys_via_value(d,v)
