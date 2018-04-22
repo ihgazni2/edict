@@ -1302,20 +1302,52 @@ class Edict():
     def complement(self,ed2,**kwargs):
         d3 = _complement(self.dict,ed2.dict)
         return(Edict(d3))
-    def uniqualize(self,ed2,**kwargs):
-        d3 = _uniqualize(self.dict,ed2.dict)
+    def uniqualize(self,**kwargs):
+        if('deepcopy' in kwargs):
+            deepcopy = kwargs['deepcopy']
+        else:
+            deepcopy = 0
+        d3 = _uniqualize(self.dict)
+        if(deepcopy):
+            self.dict = d3
+        else:
+            pass
         return(Edict(d3))
     def extend(self,ed2,**kwargs):
+        if('deepcopy' in kwargs):
+            deepcopy = kwargs['deepcopy']
+        else:
+            deepcopy = 0
         d3 = _extend(self.dict,ed2.dict,**kwargs)
+        if(deepcopy):
+            self.dict = d3
+        else:
+            pass
         return(Edict(d3))
     def comprise(self,ed2,**kwargs):
-        d3 = _comprise(self.dict,ed2.dict)
-        return(Edict(d3))
+        cond = _comprise(self.dict,ed2.dict)
+        return(cond)
     def update_intersection(self,ed2,**kwargs):
+        if('deepcopy' in kwargs):
+            deepcopy = kwargs['deepcopy']
+        else:
+            deepcopy = 0
         d3 = _update_intersection(self.dict,ed2.dict,**kwargs)
+        if(deepcopy):
+            self.dict = d3
+        else:
+            pass
         return(Edict(d3))
     def update(self,ed2,**kwargs):
+        if('deepcopy' in kwargs):
+            deepcopy = kwargs['deepcopy']
+        else:
+            deepcopy = 0
         d3 = _update(self.dict,ed2.dict,**kwargs)
+        if(deepcopy):
+            self.dict = d3
+        else:
+            pass
         return(Edict(d3))
     #################################
     #################################
