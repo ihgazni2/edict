@@ -1325,6 +1325,41 @@ class Edict():
 
 
 
+#
+
+
+def get_matloc_mapping(ktree,vdmat,attrname):
+    kvm = {}
+    vkm = {}
+    for i in range(0,ktree.__len__()):
+        klevel = ktree[i]
+        vlevel = vdmat[i+1]
+        for j in range(0,klevel.__len__()):
+            k = tuple(klevel[j])
+            v = tuple(vlevel[j][attrname])
+            kvm[k] = v
+            vkm[v] = k
+    return((kvm,vkm))
+
+def get_ktree_loc(ktree,kpath):
+    lngth = kpath.__len__()
+    level = lngth - 1
+    klevel = ktree[level]
+    index = klevel.index(kpath)
+    return((level,index))
+
+def ktrloc2vdloc(loc):
+    return((loc[0]+1,loc[1]))
+
+def vdloc2ktrloc(loc):
+    return((loc[0]-1,loc[1]))
+
+def get_attr_via_kpath_from_vdmat(vdmat,attrname,ktree,kpath):
+    loc = get_ktree_loc(ktree,kpath)
+    loc = ktrloc2vdloc(loc)
+    return(vdmat[loc[0]][loc[1]][attrname])
+
+
 #for checking 
 
 class DictTree():
