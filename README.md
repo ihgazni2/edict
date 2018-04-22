@@ -20,10 +20,11 @@
 ├──9. [keys_via_value](edict/Images/vksdesc.0.png)  <br>
 ├──10. [vksdesc](edict/Images/vksdesc.0.png)  <br>
 ├──11. [uniqualize](edict/Images/uniqualize.0.png)  <br>
-├──0. [](edict/Images/.0.png)  <br>
-├──0. [](edict/Images/.0.png)  <br>
-├──0. [](edict/Images/.0.png)  <br>
-├──0. [](edict/Images/.0.png)  <br>
+├──12. [extend\<0\>](edict/Images/extend.0.png)  <br>
+├──12. [extend\<1\>](edict/Images/extend.1.png)  <br>
+├──13. [update_intersection](edict/Images/update_intersection.0.png)  <br>
+├──14. [update\<0\>](edict/Images/update.0.png)  <br>
+├──15. [update\<1\>](edict/Images/update.1.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
