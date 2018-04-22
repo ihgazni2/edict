@@ -19,7 +19,7 @@
 ├──8. [bracket_lists](edict/Images/bracket_lists.0.png)  <br>
 ├──9. [keys_via_value](edict/Images/vksdesc.0.png)  <br>
 ├──10. [vksdesc](edict/Images/vksdesc.0.png)  <br>
-├──0. [](edict/Images/.0.png)  <br>
+├──11. [uniqualize](edict/Images/uniqualize.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
