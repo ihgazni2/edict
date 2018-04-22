@@ -1204,7 +1204,7 @@ class Edict():
         return(pls)
     def bracket_lists(self):
         tr = self.ktree()
-        brls = show_kmatrix_as_getStr()
+        brls = show_kmatrix_as_getStr(tr)
         return(brls)
     def __repr__(self):
         tr = self.ktree()
