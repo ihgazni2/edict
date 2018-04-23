@@ -4,6 +4,7 @@ import elist.elist as elel
 
 def _keys_via_value(d,v):
     '''
+        #non-recursive
         d = {1:'a',2:'b',3:'a'}
         _keys_via_value(d,'a')
     '''
@@ -12,6 +13,13 @@ def _keys_via_value(d,v):
         if(d[key] == v):
             rslt.append(key)
     return(rslt)
+
+
+
+
+
+
+
 
 def d2kvlist(d):
     '''
@@ -1190,6 +1198,7 @@ def _get_rvmat(d):
     def map_func(ele,indexc,indexr):
         return(getitem_via_pathlist(d,ele))
     rvmat = elel.matrix_map(km,map_func)
+    rvmat = elel.prepend([],rvmat)
     return(rvmat)
 
 
