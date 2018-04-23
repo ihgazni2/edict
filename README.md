@@ -56,10 +56,10 @@
 ├──38. [klist](edict/Images/klist.0.png)  <br>
 ├──39. [vlist](edict/Images/vlist.0.png)  <br>
 ├──40. [kvlists](edict/Images/kvlists.0.png)  <br>
-├──41. [](edict/Images/.0.png)  <br>
-├──42. [](edict/Images/.0.png)  <br>
-├──43. [](edict/Images/.0.png)  <br>
-├──44. [](edict/Images/.0.png)  <br>
+├──41. [contains\<0\>](edict/Images/contains.0.png)  <br>
+├──42. [contains\<1\>](edict/Images/contains.1.png)  <br>
+├──43. [count\<0\>](edict/Images/count.0.png)  <br>
+├──44. [count\<1\>](edict/Images/count.1.png)  <br>
 ├──45. [](edict/Images/.0.png)  <br>
 ├──46. [](edict/Images/.0.png)  <br>
 ├──41. [](edict/Images/.0.png)  <br>
