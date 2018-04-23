@@ -515,6 +515,12 @@ def _setdefault_via_pathlist(external_dict,path_list,**kwargs):
             this = this.__getitem__(key)
     return(external_dict)
 
+
+#for array_map
+def _setdefault_via_pathlist2(path_list,external_dict,**kwargs):
+    return(_setdefault_via_pathlist(external_dict,path_list,,**kwargs))
+
+
 def _setitem_via_pathlist(external_dict,path_list,value,**kwargs):
     '''
         y = {'c': {'b': {}}}
@@ -544,6 +550,12 @@ def _setitem_via_pathlist(external_dict,path_list,value,**kwargs):
     this.__setitem__(path_list[-1],value)
     return(external_dict)
 
+#for array_map
+def _setitem_via_pathlist2(path_list,external_dict,**kwargs):
+    return(_setitem_via_pathlist(external_dict,path_list,,**kwargs))
+
+
+
 def _getitem_via_pathlist(external_dict,path_list,**kwargs):
     '''
         y = {'c': {'b': 200}}
@@ -571,6 +583,11 @@ def _getitem_via_pathlist(external_dict,path_list,**kwargs):
                 key = int(key)
         this = this.__getitem__(key)
     return(this)
+
+#for array_map
+def _getitem_via_pathlist2(path_list,external_dict,**kwargs):
+    return(_getitem_via_pathlist(external_dict,path_list,,**kwargs))
+
 
 #special 
 def _delitem_via_pathlist(external_dict,path_list,**kwargs):
@@ -601,6 +618,13 @@ def _delitem_via_pathlist(external_dict,path_list,**kwargs):
         this = this.__getitem__(key)
     this.__delitem__(path_list[-1])
     return(external_dict)
+
+
+#for array_map
+def _delitem_via_pathlist2(path_list,external_dict,**kwargs):
+    return(_delitem_via_pathlist(external_dict,path_list,,**kwargs))
+
+
 
 def _include_pathlist(external_dict,path_list,**kwargs):
     '''
@@ -1065,6 +1089,7 @@ def get_kmdfs(km,vmwfs):
     return(kmdfs)
     
 
+
 #
 def _scanvm(vm):
     ltree = elel.ListTree(vm)
@@ -1122,6 +1147,53 @@ def kmdfs_cond_func(ele,d,from_lv,to_lv,leaf_only,non_leaf_only):
 
 
 
+def _get_rvwfs(d):
+    kmwfs = get_kmwfs(km)
+    rvwfs = elel.array_map(kmwfs,getitem_via_pathlist,d)
+    return(rvwfs)
+
+def _get_rvdfs(d):
+    km,vm = _d2kvmatrix(d)
+    vmwfs = elel.get_wfs(vm)
+    kmdfs = get_kmdfs(km,vmwfs)
+    rvdfs = elel.array_map(kmdfs,getitem_via_pathlist,d)
+    return(rvdfs)
+
+
+def _get_rvmat(d):
+    '''
+        d = {
+         'x':
+              {
+               'x2': 'x22',
+               'x1': 'x11'
+              },
+         'y':
+              {
+               'y1': 'v1',
+               'y2':
+                     {
+                      'y4': 'v4',
+                      'y3': 'v3'
+                     }
+              },
+         't': 20,
+         'u':
+              {
+               'u1': 'u2'
+              }
+        }
+        
+        
+    '''
+    km,vm = _d2kvmatrix(d)
+    def map_func(ele,indexc,indexr):
+        return(getitem_via_pathlist(d,ele))
+    rvmat = elel.matrix_map(km,map_func)
+    return(rvmat)
+
+
+
 
 #######################
 
@@ -1173,6 +1245,8 @@ class Edict():
         tr,nest = _d2kvmatrix(self.dict)
         rslt = elel.get_wfs(nest)
         return(rslt)
+    def rvwfs(self):
+        return(_get_rvwfs(self.dict))
     def wfses(self):
         return(_d2kvmatrix(self.dict))
     def kdfs(self):
@@ -1185,6 +1259,8 @@ class Edict():
         vwfs1 = elel.get_wfs(nest)
         rslt = elel.wfs2dfs(vwfs1)
         return(rslt)
+    def rvdfs(self):
+        return(_get_rvdfs(self.dict))
     def dfses(self):
         return((self.kdfs(),self.vdfs()))
     def kdescmat(self):
