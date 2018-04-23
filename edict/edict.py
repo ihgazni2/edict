@@ -1198,7 +1198,7 @@ def _get_rvmat(d):
     def map_func(ele,indexc,indexr):
         return(_getitem_via_pathlist(d,ele))
     rvmat = elel.matrix_map(km,map_func)
-    rvmat = elel.prepend([],rvmat)
+    rvmat = elel.prepend(rvmat,[])
     return(rvmat)
 
 
