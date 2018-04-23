@@ -1364,6 +1364,8 @@ class Edict():
         return(vdescm)
     def kvdescmats(self):
         return(_scan(self.dict))
+    def rvmat(self):
+        return(_get_rvmat(self.dict))
     def include_pathlist(self,*args,**kwargs):
         cond = _include_pathlist(self.dict,list(args),**kwargs)
         return(cond)
