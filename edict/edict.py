@@ -526,7 +526,7 @@ def _setdefault_via_pathlist(external_dict,path_list,**kwargs):
 
 #for array_map
 def _setdefault_via_pathlist2(path_list,external_dict,**kwargs):
-    return(_setdefault_via_pathlist(external_dict,path_list,,**kwargs))
+    return(_setdefault_via_pathlist(external_dict,path_list,**kwargs))
 
 
 def _setitem_via_pathlist(external_dict,path_list,value,**kwargs):
@@ -560,7 +560,7 @@ def _setitem_via_pathlist(external_dict,path_list,value,**kwargs):
 
 #for array_map
 def _setitem_via_pathlist2(path_list,external_dict,**kwargs):
-    return(_setitem_via_pathlist(external_dict,path_list,,**kwargs))
+    return(_setitem_via_pathlist(external_dict,path_list,**kwargs))
 
 
 
@@ -594,7 +594,7 @@ def _getitem_via_pathlist(external_dict,path_list,**kwargs):
 
 #for array_map
 def _getitem_via_pathlist2(path_list,external_dict,**kwargs):
-    return(_getitem_via_pathlist(external_dict,path_list,,**kwargs))
+    return(_getitem_via_pathlist(external_dict,path_list,**kwargs))
 
 
 #special 
@@ -630,7 +630,7 @@ def _delitem_via_pathlist(external_dict,path_list,**kwargs):
 
 #for array_map
 def _delitem_via_pathlist2(path_list,external_dict,**kwargs):
-    return(_delitem_via_pathlist(external_dict,path_list,,**kwargs))
+    return(_delitem_via_pathlist(external_dict,path_list,**kwargs))
 
 
 
