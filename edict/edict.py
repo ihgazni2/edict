@@ -1241,14 +1241,14 @@ def kmdfs_cond_func(ele,d,from_lv,to_lv,leaf_only,non_leaf_only):
 def _get_rvwfs(d):
     km,vm = _d2kvmatrix(d)
     kmwfs = get_kmwfs(km)
-    rvwfs = elel.array_map(kmwfs,_getitem_via_pathlist,d)
+    rvwfs = elel.array_map(kmwfs,_getitem_via_pathlist2,d)
     return(rvwfs)
 
 def _get_rvdfs(d):
     km,vm = _d2kvmatrix(d)
     vmwfs = elel.get_wfs(vm)
     kmdfs = get_kmdfs(km,vmwfs)
-    rvdfs = elel.array_map(kmdfs,_getitem_via_pathlist,d)
+    rvdfs = elel.array_map(kmdfs,_getitem_via_pathlist2,d)
     return(rvdfs)
 
 
