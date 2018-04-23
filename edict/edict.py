@@ -1196,7 +1196,7 @@ def _get_rvmat(d):
     '''
     km,vm = _d2kvmatrix(d)
     def map_func(ele,indexc,indexr):
-        return(getitem_via_pathlist(d,ele))
+        return(_getitem_via_pathlist(d,ele))
     rvmat = elel.matrix_map(km,map_func)
     rvmat = elel.prepend([],rvmat)
     return(rvmat)
