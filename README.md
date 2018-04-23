@@ -17,7 +17,9 @@
 ├──6. [include_pathlist](edict/Images/include_pathlist.0.png)  <br>
 ├──7. [pathlists](edict/Images/pathlists.0.png)  <br>
 ├──8. [bracket_lists](edict/Images/bracket_lists.0.png)  <br>
-├──9. [keys_via_value](edict/Images/vksdesc.0.png)  <br>
+├──9. [keys_via_value](edict/Images/keys_via_value.0.png)  <br>
+├──9. [pathlists_via_value](edict/Images/keys_via_value.0.png)  <br>
+├──9. [bracket_lists_via_value](edict/Images/bracket_lists_via_value.0.png)  <br>
 ├──10. [vksdesc](edict/Images/vksdesc.0.png)  <br>
 ├──11. [uniqualize](edict/Images/uniqualize.0.png)  <br>
 ├──12. [extend\<0\>](edict/Images/extend.0.png)  <br>
