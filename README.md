@@ -31,10 +31,10 @@
 ├──17. [intersection](edict/Images/intersection.0.png)  <br>
 ├──18. [diff](edict/Images/diff.0.png)  <br>
 ├──19. [complement](edict/Images/complement.0.png)  <br>
-├──0. [](edict/Images/.0.png)  <br>
-├──0. [](edict/Images/.0.png)  <br>
-├──0. [](edict/Images/.0.png)  <br>
-├──0. [](edict/Images/.0.png)  <br>
+├──20. [comprise](edict/Images/comprise.0.png)  <br>
+├──21. [tlist](edict/Images/tlist.0.png)  <br>
+├──22. [setdefault](edict/Images/setdefault.0.png)  <br>
+├──23. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
 ├──0. [](edict/Images/.0.png)  <br>
