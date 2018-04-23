@@ -1422,7 +1422,7 @@ class Edict():
         return(_keys_via_value(self.dict,value,**kwargs))
     def pathlists_via_value(self,value,**kwargs):
         return(_keys_via_value(self.dict,value,**kwargs))
-    def bracket_lists_via_value(self.dict,value,**kwargs):
+    def bracket_lists_via_value(self,value,**kwargs):
         return(_bracket_lists_via_value(self.dict,value,**kwargs))
     def vksdesc(self):
         return(_vksdesc(self.dict))
