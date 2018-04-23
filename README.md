@@ -1,8 +1,10 @@
 # edict
->__handle ...__
 
-# install
->__pip3 install edict
+>__handle dict, flatten__
+
+# install 
+
+>__pip3 install edict__
 
 -----------------------------------------------------------------------
 
