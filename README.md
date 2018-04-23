@@ -1,8 +1,10 @@
 # edict
->__handle ...__
 
-# install
->__pip3 install edict
+>__handle dict, flatten__
+
+# install 
+
+>__pip3 install edict__
 
 -----------------------------------------------------------------------
 
@@ -17,9 +19,12 @@
 ├──6. [include_pathlist](edict/Images/include_pathlist.0.png)  <br>
 ├──7. [pathlists](edict/Images/pathlists.0.png)  <br>
 ├──8. [bracket_lists](edict/Images/bracket_lists.0.png)  <br>
-├──9. [keys_via_value](edict/Images/keys_via_value.0.png)  <br>
-├──9. [pathlists_via_value](edict/Images/keys_via_value.0.png)  <br>
-├──9. [bracket_lists_via_value](edict/Images/bracket_lists_via_value.0.png)  <br>
+├──9. [keys_via_value\<0\>](edict/Images/keys_via_value.0.png)  <br>
+├──9. [keys_via_value\<1\>](edict/Images/keys_via_value.1.png)  <br>
+├──9. [pathlists_via_value\<0\>](edict/Images/keys_via_value.0.png)  <br>
+├──9. [pathlists_via_value\<1\>](edict/Images/keys_via_value.1.png)  <br>
+├──9. [bracket_lists_via_value\<0\>](edict/Images/bracket_lists_via_value.0.png)  <br>
+├──9. [bracket_lists_via_value\<1\>](edict/Images/bracket_lists_via_value.1.png)  <br>
 ├──10. [vksdesc](edict/Images/vksdesc.0.png)  <br>
 ├──11. [uniqualize](edict/Images/uniqualize.0.png)  <br>
 ├──12. [extend\<0\>](edict/Images/extend.0.png)  <br>
@@ -46,7 +51,6 @@
 ├──32. [kdescmats](edict/Images/kdescmats.0.png)  <br>
 ├──33. [vdescmats](edict/Images/vdescmats.0.png)  <br>
 ├──34. [kvdescmats](edict/Images/kvdescmats.0.png)  <br>
-├──35. [ktree](edict/Images/ktree.0.png)  <br>
 ├──36. [vnest](edict/Images/vnest.0.png)  <br>
 ├──37. [ktree_vnest](edict/Images/ktree_vnest.0.png)  <br>
 ├──38. [klist](edict/Images/klist.0.png)  <br>
