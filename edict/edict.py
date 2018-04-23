@@ -1130,7 +1130,7 @@ def _kvmatrix2d(km,vm):
     vmwfs = elel.get_wfs(vm)
     lngth = vmwfs.__len__()
     for i in range(0,lngth):
-        value = elel._getitem_via_pathlist(vm,vmwfs[i])
+        value = elel.getitem_via_pathlist(vm,vmwfs[i])
         cond = elel.is_leaf(value)
         if(cond):
             _setitem_via_pathlist(d,kmwfs[i],value)
