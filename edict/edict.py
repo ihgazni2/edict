@@ -101,6 +101,17 @@ def _bracket_lists_via_value(d,value,**kwargs):
     return(brls)
 
 
+######################################
+
+def _contains(d,value,**kwargs):
+    kpls = _keys_via_value(d,value,**kwargs)
+    if(kpls.__len__() == 0):
+        return(False)
+    else:
+        return(True)
+
+######################################
+
 
 ######################################
 
@@ -1428,6 +1439,8 @@ class Edict():
         return(_bracket_lists_via_value(self.dict,value,**kwargs))
     def vksdesc(self):
         return(_vksdesc(self.dict))
+    def contains(self,value,**kwargs):
+        return(_contains(self.dict,value,**kwargs))
     def tree(self,**kwargs):
         if('leaf_only' in kwargs):
             leaf_only = kwargs['leaf_only']
