@@ -2,11 +2,13 @@ import re
 import copy
 import elist.elist as elel
 
-def _keys_via_value(d,v):
+#######################################
+#non-recursive
+def _keys_via_value_nonrecur(d,v):
     '''
         #non-recursive
         d = {1:'a',2:'b',3:'a'}
-        _keys_via_value(d,'a')
+        _keys_via_value_nonrecur(d,'a')
     '''
     rslt = []
     for key in d:
@@ -15,11 +17,92 @@ def _keys_via_value(d,v):
     return(rslt)
 
 
+######################################
+#recursive
+def _keys_via_value(d,value,**kwargs):
+    '''
+        d = {
+         'x':
+              {
+               'x2': 'x22',
+               'x1': 'x11'
+              },
+         'y':
+              {
+               'y1': 'v1',
+               'y2':
+                     {
+                      'y4': 'v4',
+                      'y3': 'v3',
+                     },
+               'xx': 
+                    {
+                        'x2': 'x22',
+                        'x1': 'x11'
+                  }
+              },
+         't': 20,
+         'u':
+              {
+               'u1': 20
+              }
+        }
+    '''
+    km,vm = _d2kvmatrix(d)
+    rvmat = _get_rvmat(d)
+    depth = rvmat.__len__()
+    kdmat = _scankm(km)
+    if('leaf_only' in kwargs):
+        leaf_only = kwargs['leaf_only']
+    else:
+        leaf_only = False
+    if('non_leaf_only' in kwargs):
+        non_leaf_only = kwargs['non_leaf_only']
+    else:
+        non_leaf_only = False
+    if('from_lv' in kwargs):
+        from_lv = kwargs['from_lv']
+    else:
+        from_lv = 1
+    if('to_lv' in kwargs):
+        to_lv = kwargs['to_lv']
+    else:
+        if('from_lv' in kwargs):
+            to_lv = from_lv
+        else:
+            to_lv = depth
+    rslt = []
+    for i in range(from_lv,to_lv):
+        rvlevel = rvmat[i]
+        for j in range(0,rvlevel.__len__()):
+            v = rvlevel[j]
+            cond1 = (v == value)
+            if(leaf_only == True):
+                cond2 = (kdmat[i][j]['leaf'] == True)
+            elif(non_leaf_only == True):
+                cond2 = (kdmat[i][j]['leaf'] == False)
+            else:
+                cond2 = True
+            cond = (cond1 & cond2)
+            if(cond):
+                rslt.append(kdmat[i][j]['path'])
+            else:
+                pass
+    return(rslt)
+
+pathlists_via_value = _keys_via_value
+
+
+def _bracket_lists_via_value(d,value,**kwargs):
+    '''
+    '''
+    kpls = _keys_via_value(d,value,**kwargs)
+    brls = elel.array_map(kpls,elel.pathlist_to_getStr)
+    return(brls)
 
 
 
-
-
+######################################
 
 def d2kvlist(d):
     '''
@@ -167,7 +250,7 @@ def dict_mirror(d,**kwargs):
     vl = list(d.values())
     uvl = elel.uniqualize(vl)
     for v in uvl:
-        kl = _keys_via_value(d,v)
+        kl = _keys_via_value_nonrecur(d,v)
         k = sorted(kl)[0]
         md[v] = k
     return(md)
@@ -1334,8 +1417,12 @@ class Edict():
             #very special in __getitem__
             pl = list(args)
         return(_delitem_via_pathlist(self.dict,pl))
-    def keys_via_value(self,value):
-        return(_keys_via_value(self.dict,value))
+    def keys_via_value(self,value,**kwargs):
+        return(_keys_via_value(self.dict,value,**kwargs))
+    def pathlists_via_value(self,value,**kwargs):
+        return(_keys_via_value(self.dict,value,**kwargs))
+    def bracket_lists_via_value(self.dict,value,**kwargs):
+        return(_bracket_lists_via_value(self.dict,value,**kwargs))
     def vksdesc(self):
         return(_vksdesc(self.dict))
     def tree(self,**kwargs):
