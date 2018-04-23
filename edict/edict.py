@@ -112,6 +112,9 @@ def _contains(d,value,**kwargs):
 
 ######################################
 
+def _count(d,value,**kwargs):
+    kpls = _keys_via_value(d,value,**kwargs)
+    return(kpls.__len__())
 
 ######################################
 
@@ -1441,6 +1444,8 @@ class Edict():
         return(_vksdesc(self.dict))
     def contains(self,value,**kwargs):
         return(_contains(self.dict,value,**kwargs))
+    def count(self,value,**kwargs):
+        return(_count(self.dict,value,**kwargs))
     def tree(self,**kwargs):
         if('leaf_only' in kwargs):
             leaf_only = kwargs['leaf_only']
