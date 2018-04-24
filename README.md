@@ -19,6 +19,8 @@
 ├──2. [keys\<1\>](edict/Images/keys.1.png)  <br>
 ├──2. [values\<0\>](edict/Images/values.0.png)  <br>
 ├──2. [values\<1\>](edict/Images/values.1.png)  <br>
+├──2. [values\<2\>](edict/Images/values.2.png)  <br>
+├──2. [values\<3\>](edict/Images/values.3.png)  <br>
 ├──2. [ktree](edict/Images/ktree.0.png)  <br>
 ├──3. [\_\_getitem\_\_](edict/Images/__getitem__.0.png)  <br>
 ├──4. [\_\_setitem\_\_](edict/Images/__setitem__.0.png)  <br>
