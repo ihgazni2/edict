@@ -1531,7 +1531,7 @@ class Edict():
         return(_count(self.dict,value,**kwargs))
     def keypaths(self,*args,**kwargs):
         return(_keypaths(self.dict,*args,**kwargs))
-    def keys(self,args,**kwargs):
+    def keys(self,*args,**kwargs):
         return(_keys(self.dict,*args,**kwargs))
     def tree(self,**kwargs):
         if('leaf_only' in kwargs):
