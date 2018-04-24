@@ -12,6 +12,12 @@
 -----------------------------------------------------------------------
 >├──0. [\_\_init\_\_](edict/Images/__init__.0.png) <br>
 ├──1. [\_\_repr\_\_](edict/Images/__repr__.0.png)  <br>
+├──2. [keypaths\<0\>](edict/Images/keypaths.0.png)  <br>
+├──2. [keypaths\<1\>](edict/Images/keypaths.1.png)  <br>
+├──2. [keypaths\<2\>](edict/Images/keypaths.2.png)  <br>
+├──2. [keys\<0\>](edict/Images/keys.0.png)  <br>
+├──2. [keys\<1\>](edict/Images/keys.1.png)  <br>
+├──2. [keys\<2\>](edict/Images/keys.2.png)  <br>
 ├──2. [ktree](edict/Images/ktree.0.png)  <br>
 ├──3. [\_\_getitem\_\_](edict/Images/__getitem__.0.png)  <br>
 ├──4. [\_\_setitem\_\_](edict/Images/__setitem__.0.png)  <br>
