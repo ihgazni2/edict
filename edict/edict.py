@@ -1010,7 +1010,7 @@ def _keypaths(d,*args,**kwargs):
         to_lv = depth
     elif(args_len == 1):
         from_lv = args[0]
-        to_lv = from_lv
+        to_lv = from_lv+1
     else:
         from_lv = args[0]
         to_lv = args[1]
