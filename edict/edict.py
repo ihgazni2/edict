@@ -1030,14 +1030,58 @@ def _keypaths(d,*args,**kwargs):
                 pass
     return(rslt)
 
+##########################################################
 
 def _keys(d,*args,**kwargs):
     kps = _keypaths(d,*args,**kwargs)
     ks = elel.array_map(kps,list.__getitem__,-1)
     return(ks)
 
+##########################################################
 
-#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+def _values(d,*args,**kwargs):
+    km,vm = _d2kvmatrix(d)
+    rvmat = _get_rvmat(d)
+    depth = rvmat.__len__()
+    kdmat = _scankm(km)
+    if('leaf_only' in kwargs):
+        leaf_only = kwargs['leaf_only']
+    else:
+        leaf_only = False
+    if('non_leaf_only' in kwargs):
+        non_leaf_only = kwargs['non_leaf_only']
+    else:
+        non_leaf_only = False
+    args_len = args.__len__()
+    if(args_len == 0):
+        from_lv = 1
+        to_lv = depth
+    elif(args_len == 1):
+        from_lv = args[0]
+        to_lv = from_lv+1
+    else:
+        from_lv = args[0]
+        to_lv = args[1]
+    rslt = []
+    for i in range(from_lv,to_lv):
+        rvlevel = rvmat[i]
+        for j in range(0,rvlevel.__len__()):
+            v = rvlevel[j]
+            if(leaf_only == True):
+                cond = (kdmat[i][j]['leaf'] == True)
+            elif(non_leaf_only == True):
+                cond = (kdmat[i][j]['leaf'] == False)
+            else:
+                cond = True
+            if(cond):
+                rslt.append(v)
+            else:
+                pass
+    return(rslt)
+
+
+
+##########################################################
 
 def _init_descmat_root():
     '''
