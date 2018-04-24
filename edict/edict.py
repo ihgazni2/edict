@@ -1030,6 +1030,13 @@ def _keypaths(d,*args,**kwargs):
                 pass
     return(rslt)
 
+
+def _keys(d,*args,**kwargs):
+    kps = _keypaths(d,*args,**kwargs)
+    ks = elel.array_map(kps,list.__getitem__,-1)
+    return(ks)
+
+
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 def _init_descmat_root():
@@ -1522,6 +1529,10 @@ class Edict():
         return(_contains(self.dict,value,**kwargs))
     def count(self,value,**kwargs):
         return(_count(self.dict,value,**kwargs))
+    def keypaths(self,*args,**kwargs):
+        return(_keypaths(self.dict,*args,**kwargs))
+    def keys(self,args,**kwargs):
+        return(_keys(self.dict,*args,**kwargs))
     def tree(self,**kwargs):
         if('leaf_only' in kwargs):
             leaf_only = kwargs['leaf_only']
