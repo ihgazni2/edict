@@ -2,6 +2,44 @@ import re
 import copy
 import elist.elist as elel
 
+######################################
+
+#kp                   key-path
+
+#kt ktree          key-path-tree              #最外面的[]是容器    old km
+#vn vnest          value-in-nested-list       #最外面的[]是容器    old vm
+
+#vndmat        vnest-description-matrix                        
+
+#kpmat          key-path-matrix     (append [] to ktree)
+#rvmat          real-value-matrix   (corresponding to kpmat)    
+
+#kdmat          kpmat-description-matrix
+#vdmat          rvmat-description-matrix    #refer to kdmat
+
+
+
+
+#######################################
+
+def _get_vndmat(d):
+    kt,vn = _d2kvmatrix(d)
+    vndmat = elel.ListTree(vn).desc
+    return(vndmat)
+
+def _get_kpmat(d):
+    kt,vn = _d2kvmatrix(d)
+    kpmat = elel.prepend(kt,[])
+    return(kpmat)
+
+
+def _get_kdmat(d):
+    kt,vn = _d2kvmatrix(d)
+    kdmat = _scankm(kt)
+    return(kdmat)
+    
+
+
 #######################################
 #non-recursive
 def _keys_via_value_nonrecur(d,v):
@@ -953,6 +991,44 @@ def show_kmatrix_as_getStr(km):
             print(gs)
             rslt.append(gs)
     return(rslt)
+#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+def _keypaths(d,*args,**kwargs):
+    kdmat = _get_kdmat(d)
+    depth = kdmat.__len__()
+    if('leaf_only' in kwargs):
+        leaf_only = kwargs['leaf_only']
+    else:
+        leaf_only = False
+    if('non_leaf_only' in kwargs):
+        non_leaf_only = kwargs['non_leaf_only']
+    else:
+        non_leaf_only = False
+    args_len = args.__len__()
+    if(args_len == 0):
+        from_lv = 1
+        to_lv = depth
+    elif(args_len == 1):
+        from_lv = args[0]
+        to_lv = from_lv
+    else:
+        from_lv = args[0]
+        to_lv = args[1]
+    rslt = []
+    for i in range(from_lv,to_lv):
+        klevel = kdmat[i]
+        for j in range(0,klevel.__len__()):
+            if(leaf_only == True):
+                cond = (kdmat[i][j]['leaf'] == True)
+            elif(non_leaf_only == True):
+                cond = (kdmat[i][j]['leaf'] == False)
+            else:
+                cond = True
+            if(cond):
+                rslt.append(kdmat[i][j]['path'])
+            else:
+                pass
+    return(rslt)
 
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
@@ -1153,7 +1229,7 @@ def _scankm(km,descmat=[]):
     desc['sons_count'] = _acc_sons_count(desc)
     return(descmat)
 
-cmdlines_tree = _scankm
+
 
 def _mat_size(mat):
     '''
@@ -1167,7 +1243,7 @@ def _mat_size(mat):
 
 
 #km 是一个广度优先的pathlist 存储二维矩阵
-#vm 是一个嵌套矩阵
+#vm 是一个嵌套List
 #ltree = elel.ListTree(vm) 
 #ltree.tree() 是一个深度优先的 pathlist 一维数组 
 #_mat_size(km) == ltree.tree().__len__()
@@ -1370,14 +1446,14 @@ class Edict():
         return(_get_rvdfs(self.dict))
     def dfses(self):
         return((self.kdfs(),self.vdfs()))
-    def kdescmat(self):
-        kdescm,vdescm = _scan(self.dict)
-        return(kdescm)
-    def vdescmat(self):
-        kdescm,vdescm = _scan(self.dict)
-        return(vdescm)
-    def kvdescmats(self):
+    def kdmat(self):
+        return(_get_kdmat(self.dict))
+    def vndmat(self):
+        return(_get_vndmat(self.dict))
+    def ktvndmats(self):
         return(_scan(self.dict))
+    def kpmat(self):
+        return(_get_kpmat(self.dict))
     def rvmat(self):
         return(_get_rvmat(self.dict))
     def include_pathlist(self,*args,**kwargs):
