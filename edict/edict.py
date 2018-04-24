@@ -1000,6 +1000,18 @@ def show_kmatrix_as_getStr(km):
             print(gs)
             rslt.append(gs)
     return(rslt)
+
+
+def show_dict(d,l):
+    lngth = l.__len__()
+    if(type(l[0])== type([])):
+        for i in range(0,lngth):
+            print(_getitem_via_pathlist(d,l[i]))
+    else:
+        for i in range(0,lngth):
+            pl = elel.gs2pl(l[i])
+            print(_getitem_via_pathlist(d,pl))
+
 #@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 def _keypaths(d,*args,**kwargs):
