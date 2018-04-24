@@ -139,6 +139,15 @@ def _bracket_lists_via_value(d,value,**kwargs):
     return(brls)
 
 
+def kpls2brls(kpls):
+    brls = elel.array_map(kpls,elel.pathlist_to_getStr)
+    return(brls)
+
+def brls2kpls(brls):
+    kpls = elel.array_map(brls,elel.getStr_to_pathlist)
+    return(kpls)
+
+
 ######################################
 
 def _contains(d,value,**kwargs):
