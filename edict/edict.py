@@ -1462,7 +1462,7 @@ def _get_rvmat(d):
 
 #######################
 
-def cond_select_via_key(d,cond_ele,*args,**kwargs):
+def _cond_select_via_key(d,cond_ele,*args,**kwargs):
     '''
     '''
     if('mode' in kwargs):
