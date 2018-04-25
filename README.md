@@ -74,8 +74,8 @@
 ├──46. [total](edict/Images/depth.0.png)  <br>
 ├──47. [maxLevelWidth](edict/Images/depth.0.png)  <br>
 ├──48. [flatWidth](edict/Images/depth.0.png)  <br>
-├──49. [tree](edict/Images/tree.0.png)  <br>
-├──50. [](edict/Images/.0.png)  <br>
+├──49. [tree\<0\>](edict/Images/tree.0.png)  <br>
+├──50. [tree\<1\>](edict/Images/tree.1.png)  <br>
 ├──51. [](edict/Images/.0.png)  <br>
 ├──52. [](edict/Images/.0.png)  <br>
 ├──53. [](edict/Images/.0.png)  <br>
