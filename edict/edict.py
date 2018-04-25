@@ -22,6 +22,14 @@ import elist.elist as elel
 
 #######################################
 
+def _get_kdfs(d):
+    tr,nest = _d2kvmatrix(self.dict)
+    vwfs1 = elel.get_wfs(nest)
+    rslt = get_kmdfs(tr,vwfs1)
+    return(rslt)
+
+
+
 def _get_vndmat(d):
     kt,vn = _d2kvmatrix(d)
     vndmat = elel.ListTree(vn).desc
@@ -1452,7 +1460,27 @@ def _get_rvmat(d):
     rvmat = elel.prepend(rvmat,[])
     return(rvmat)
 
+#######################
 
+def _cond_select_via_key(d,cond_ele,*args,**kwargs):
+    '''
+    '''
+    kdfs = _get_kdfs(d)
+    t = type(cond_ele)
+    if(t == type('')):
+        rslt = elel.select_loose_in(kdfs,cond_ele)
+    elif(t == type(re.compile(''))):
+        rslt = elel.select_regex_in(kdfs,cond_ele)
+    elif(t == type(lambda x:x)):
+        cond_func = kwargs['cond_func']
+        if('cond_func_args' in kwargs):
+            cond_func_args = kwargs['cond_func_args']
+        else:
+            cond_func_args = []
+        rslt = elel.cond_select_values_all2(kdfs,cond_func=cond_func, cond_func_args = cond_func_args)
+    else:
+        rslt = kdfs
+    return(rslt)
 
 
 #######################
@@ -1559,10 +1587,10 @@ class Edict():
             #very special in __getitem__
             pl = list(args)
         return(_getitem_via_pathlist(self.dict,pl))
-    def cond_select_via_key(self,cond_match=None,**kwargs):
-        return(_cond_select_via_key_nonrecur(self.dict,cond_match=None,**kwargs))
-    def cond_select_via_value(self,cond_match=None,**kwargs):
-        return(_cond_select_via_value(self.dict,cond_match=None,**kwargs))
+    def cond_select_via_key(self,cond_ele,*args,**kwargs):
+        return(_cond_select_via_key(self.dict,cond_ele,*args,**kwargs))
+    def cond_select_via_value(self,cond_ele,*args,**kwargs):
+        return(_cond_select_via_value(self.dict,cond_ele,*args,**kwargs))
     def __setitem__(self,*args,**kwargs):
         #very special in __setitem__
         if(isinstance(args[0],tuple)):
