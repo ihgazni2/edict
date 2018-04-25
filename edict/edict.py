@@ -23,7 +23,7 @@ import elist.elist as elel
 #######################################
 
 def _get_kdfs(d):
-    tr,nest = _d2kvmatrix(self.dict)
+    tr,nest = _d2kvmatrix(d)
     vwfs1 = elel.get_wfs(nest)
     rslt = get_kmdfs(tr,vwfs1)
     return(rslt)
