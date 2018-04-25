@@ -331,7 +331,7 @@ def _text_cond(text,condmatch,*args):
     else:
         return(condmatch(text,*args))
 
-def _cond_select_via_key(d,cond_match=None,**kwargs):
+def _cond_select_via_key_nonrecur(d,cond_match=None,**kwargs):
     '''
         d = {
             "ActiveArea":"50829", 
@@ -344,10 +344,10 @@ def _cond_select_via_key(d,cond_match=None,**kwargs):
             "AsShotNeutral":"50728",          
             "AsShotWhiteXY":"50729"
         }
-        _cond_select_via_key(d,"An")
-        _cond_select_via_key(d,"As")
+        _cond_select_via_key_nonrecur(d,"An")
+        _cond_select_via_key_nonrecur(d,"As")
         regex = re.compile("e$")
-        _cond_select_via_key(d,regex)
+        _cond_select_via_key_nonrecur(d,regex)
     '''
     if('cond_func' in kwargs):
         cond_func = kwargs['cond_func']
@@ -1314,6 +1314,11 @@ def _mat_size(mat):
     return(size)
 
 
+def _mat_max_width(mat):
+    widths = elel.array_map(mat,len)
+    return(max(widths))
+
+
 #km 是一个广度优先的pathlist 存储二维矩阵
 #vm 是一个嵌套List
 #ltree = elel.ListTree(vm) 
@@ -1555,7 +1560,7 @@ class Edict():
             pl = list(args)
         return(_getitem_via_pathlist(self.dict,pl))
     def cond_select_via_key(self,cond_match=None,**kwargs):
-        return(_cond_select_via_key(self.dict,cond_match=None,**kwargs))
+        return(_cond_select_via_key_nonrecur(self.dict,cond_match=None,**kwargs))
     def cond_select_via_value(self,cond_match=None,**kwargs):
         return(_cond_select_via_value(self.dict,cond_match=None,**kwargs))
     def __setitem__(self,*args,**kwargs):
@@ -1600,7 +1605,25 @@ class Edict():
         return(_keys(self.dict,*args,**kwargs))
     def values(self,*args,**kwargs):
         return(_values(self.dict,*args,**kwargs))
+    def depth(self,**kwargs):
+        kt,vn = eded._d2kvmatrix(self.dict)
+        dpth = kt.__len__()
+        return(dpth)
+    def total(self,**kwargs):
+        kt,vn = eded._d2kvmatrix(self.dict)
+        size = _mat_size(kt)
+        return(size)
+    def maxLevelWidth(self,**kwargs):
+        kt,vn = eded._d2kvmatrix(self.dict)
+        mxwdth = _mat_max_width(kt)
+        return(mxwdth)
+    def flatWidth(self,**kwargs):
+        kt,vn = eded._d2kvmatrix(self.dict)
+        ltree = elel.ListTree(vn)
+        fwdth = ltree.flatWidth
+        return(fwdth)
     def tree(self,**kwargs):
+        dpth = self.depth()
         if('leaf_only' in kwargs):
             leaf_only = kwargs['leaf_only']
         else:
@@ -1616,7 +1639,7 @@ class Edict():
         if('to_lv' in kwargs):
             to_lv = kwargs['to_lv']
         else:
-            to_lv = self.depth
+            to_lv = dpth
         if('show' in kwargs):
             show = kwargs['show']
         else:
