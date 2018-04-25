@@ -1466,7 +1466,7 @@ def _cond_select_via_key(d,cond_ele,*args,**kwargs):
     '''
     '''
     if('mode' in kwargs):
-        mode = kwargs['strict']
+        mode = kwargs['mode']
     else:
         mode = 'loose'
     kdfs = _get_kdfs(d)
