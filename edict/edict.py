@@ -1462,13 +1462,20 @@ def _get_rvmat(d):
 
 #######################
 
-def _cond_select_via_key(d,cond_ele,*args,**kwargs):
+def cond_select_via_key(d,cond_ele,*args,**kwargs):
     '''
     '''
+    if('mode' in kwargs):
+        mode = kwargs['strict']
+    else:
+        mode = 'loose'
     kdfs = _get_kdfs(d)
     t = type(cond_ele)
     if(t == type('')):
-        rslt = elel.select_loose_in(kdfs,cond_ele)
+        if(mode == 'loose'):
+            rslt = elel.select_loose_in(kdfs,cond_ele)
+        else:
+            rslt = elel.select_strict_in(kdfs,cond_ele)
     elif(t == type(re.compile(''))):
         rslt = elel.select_regex_in(kdfs,cond_ele)
     elif(t == type(lambda x:x)):
@@ -1481,7 +1488,6 @@ def _cond_select_via_key(d,cond_ele,*args,**kwargs):
     else:
         rslt = kdfs
     return(rslt)
-
 
 #######################
 
