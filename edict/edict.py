@@ -18,7 +18,7 @@ import elist.elist as elel
 #vdmat          rvmat-description-matrix    #refer to kdmat
 
 
-
+#是否使用lasy 模式 很纠结，这个Lib纯当一个实验品吧
 
 #######################################
 
@@ -1606,19 +1606,19 @@ class Edict():
     def values(self,*args,**kwargs):
         return(_values(self.dict,*args,**kwargs))
     def depth(self,**kwargs):
-        kt,vn = eded._d2kvmatrix(self.dict)
+        kt,vn = _d2kvmatrix(self.dict)
         dpth = kt.__len__()
         return(dpth)
     def total(self,**kwargs):
-        kt,vn = eded._d2kvmatrix(self.dict)
+        kt,vn = _d2kvmatrix(self.dict)
         size = _mat_size(kt)
         return(size)
     def maxLevelWidth(self,**kwargs):
-        kt,vn = eded._d2kvmatrix(self.dict)
+        kt,vn = _d2kvmatrix(self.dict)
         mxwdth = _mat_max_width(kt)
         return(mxwdth)
     def flatWidth(self,**kwargs):
-        kt,vn = eded._d2kvmatrix(self.dict)
+        kt,vn = _d2kvmatrix(self.dict)
         ltree = elel.ListTree(vn)
         fwdth = ltree.flatWidth
         return(fwdth)
