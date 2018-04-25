@@ -1479,7 +1479,7 @@ def _cond_select_via_key(d,cond_ele,*args,**kwargs):
     elif(t == type(re.compile(''))):
         rslt = elel.select_regex_in(kdfs,cond_ele)
     elif(t == type(lambda x:x)):
-        cond_func = kwargs['cond_func']
+        cond_func = cond_ele
         if('cond_func_args' in kwargs):
             cond_func_args = kwargs['cond_func_args']
         else:
