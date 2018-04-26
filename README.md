@@ -87,10 +87,10 @@
 ├──59. [ancestor_keypaths\<1\>](edict/Images/ancestors.1.png)  <br>
 ├──60. [ancestors\<0\>](edict/Images/ancestors.0.png)  <br>
 ├──61. [ancestors\<1\>](edict/Images/ancestors.1.png)  <br>
-├──62. [](edict/Images/.0.png)  <br>
-├──63. [](edict/Images/.0.png)  <br>
-├──64. [](edict/Images/.0.png)  <br>
-├──65. [](edict/Images/.0.png)  <br>
+├──62. [parent_keypath\<0\>](edict/Images/parent.0.png)  <br>
+├──63. [parent_keypath\<1\>](edict/Images/parent.1.png)  <br>
+├──64. [parent\<0\>](edict/Images/parent.0.png)  <br>
+├──65. [parent\<1\>](edict/Images/parent.1.png)  <br>
 ├──66. [](edict/Images/.0.png)  <br>
 ├──67. [](edict/Images/.0.png)  <br>
 ├──68. [](edict/Images/.0.png)  <br>
