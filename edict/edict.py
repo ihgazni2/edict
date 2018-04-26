@@ -1,6 +1,8 @@
 import re
 import copy
 import elist.elist as elel
+import estring.estring as eses
+
 
 ######################################
 
@@ -22,6 +24,140 @@ import elist.elist as elel
 
 #######################################
 
+
+def cmdpl_in_cmdpl(cmdpl1,cmdpl2,**kwargs):
+    cmd_pl1 = copy.deepcopy(cmdpl1)
+    cmd_pl2 = copy.deepcopy(cmdpl2)
+    cmdpl1 = []
+    for i in range(0,cmd_pl1.__len__()):
+        v = cmd_pl1[i]
+        v = str(v)
+        cmdpl1.append(v)
+    cmdpl2 = []
+    for i in range(0,cmd_pl2.__len__()):
+        v = cmd_pl2[i]
+        v = str(v)
+        cmdpl2.append(v)
+    if('mode' in kwargs):
+        mode = kwargs['mode']
+    else:
+        mode = 'strict'
+    cmdpl1_len = cmdpl1.__len__()
+    cmdpl2_len = cmdpl2.__len__()
+    if(cmdpl1_len > cmdpl2_len):
+        return(False)
+    else:
+        pass
+    if(mode == 'strict'):
+        if(cmdpl1_len == 0):
+            return(True)
+        elif(cmdpl1_len==1):
+            start1 = cmdpl1[0]
+            start2 = cmdpl2[0]
+            cond = eses.startsWith(start2,start1)
+            if(cond):
+                return(True)
+            else:
+                return(False)
+        else:
+            for i in range(0,cmdpl1_len-1):
+                if(cmdpl1[i]==cmdpl2[i]):
+                    pass
+                else:
+                    return(False)
+            end1 = cmdpl1[cmdpl1_len-1]
+            end2 = cmdpl2[cmdpl1_len-1]
+            cond = eses.startsWith(end1,end2)
+            if(cond):
+                return(True)
+            else:
+                return(False)
+    else:
+        if(cmdpl1_len == 0):
+            return(True)
+        elif(cmdpl1_len==1):
+            ele1 = cmdpl1[0]
+            for i in range(0,cmdpl2_len):
+                ele2 = cmdpl2[i]
+                cond = (ele1 in ele2)
+                if(cond):
+                    return(True)
+                else:
+                    pass
+            return(False)
+        else:
+            #---------debug--------#
+            def try_to_find_match(lb2,cmdpl1_len,cmdpl2_len,cmdpl1,cmdpl2):
+                distance = lb2 - 1
+                if(lb2>cmdpl2_len - 1):
+                    return((False,0,distance))
+                else:
+                    i = -1
+                    for i in range(1,cmdpl1_len-1):
+                        index = i + distance
+                        if(index > (cmdpl2_len -1)):
+                            return((False,i,distance))
+                        else:
+                            if(cmdpl1[i]==cmdpl2[index]):
+                                pass
+                            else:
+                                return((False,i,distance))
+                    return((True,i,distance))
+            #---------debug--------#
+            lb2 = 0
+            finded = 0
+            start1 = cmdpl1[0]
+            for j in range(0,cmdpl2_len):
+                start2 = cmdpl2[j]
+                cond = eses.endsWith(start2,start1)
+                if(cond):
+                    lb2 = j+1
+                    finded,lb1,distance = try_to_find_match(lb2,cmdpl1_len,cmdpl2_len,cmdpl1,cmdpl2)
+                    if(finded):
+                        break
+                    else:
+                        pass
+                else:
+                    pass
+            if(finded):
+                pass
+            else:
+                return(False)
+            if(lb2>cmdpl2_len - 1):
+                return(False)
+            else:
+                index = cmdpl1_len-1+distance
+                if(index > (cmdpl2_len -1)):
+                    return(False)
+                else:
+                    end1 = cmdpl1[cmdpl1_len-1]
+                    end2 = cmdpl2[index]
+                    cond = eses.startsWith(end2,end1)
+                    if(cond):
+                        return(True)
+                    else:
+                        return(False)
+
+######################################
+
+
+def _cond_select_keypath(d,keypath,*args,**kwargs):
+    '''
+    '''
+    if('mode' in kwargs):
+        mode = kwargs['mode']
+    else:
+        mode = 'loose'
+    def cond_func(ele,keypath):
+        cond = cmdpl_in_cmdpl(keypath,ele,mode=mode)
+        return(cond)
+    kdfs = _get_kdfs(d)
+    rslt = elel.filter(kdfs,cond_func)
+    return(rslt)
+
+
+
+#######################################
 def _get_kdfs(d):
     tr,nest = _d2kvmatrix(d)
     vwfs1 = elel.get_wfs(nest)
@@ -373,7 +509,7 @@ def _cond_select_key_nonrecur(d,cond_match=None,**kwargs):
             pass
     return(rslt)
 
-def _cond_select_via_value_nonrecur(d,cond_match=None,**kwargs):
+def _cond_select_value_nonrecur(d,cond_match=None,**kwargs):
     '''
         d = {
             "ActiveArea":"50829", 
@@ -386,10 +522,10 @@ def _cond_select_via_value_nonrecur(d,cond_match=None,**kwargs):
             "AsShotNeutral":"50728",          
             "AsShotWhiteXY":"50729"
         }
-        _cond_select_via_value_nonrecur(d,"50")
-        _cond_select_via_value_nonrecur(d,"72")
+        _cond_select_value_nonrecur(d,"50")
+        _cond_select_value_nonrecur(d,"72")
         regex = re.compile("8$")
-        _cond_select_via_value_nonrecur(d,regex)
+        _cond_select_value_nonrecur(d,regex)
     '''
     if('cond_func' in kwargs):
         cond_func = kwargs['cond_func']
@@ -1627,6 +1763,8 @@ class Edict():
         return(_cond_select_key(self.dict,cond_ele,*args,**kwargs))
     def cond_select_leaf_value(self,cond_ele,*args,**kwargs):
         return(_cond_select_leaf_value(self.dict,cond_ele,*args,**kwargs))
+    def cond_select_keypath(self,keypath,*args,**kwargs):
+        return(_cond_select_keypath(self.dict,keypath,*args,**kwargs))
     def __setitem__(self,*args,**kwargs):
         #very special in __setitem__
         if(isinstance(args[0],tuple)):
