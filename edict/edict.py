@@ -152,7 +152,7 @@ def _cond_select_keypath(d,keypath,*args,**kwargs):
         cond = cmdpl_in_cmdpl(keypath,ele,mode=mode)
         return(cond)
     kdfs = _get_kdfs(d)
-    rslt = elel.filter(kdfs,cond_func)
+    rslt = elel.filter(kdfs,cond_func,keypath)
     return(rslt)
 
 
