@@ -42,6 +42,25 @@ def _ancestors(d,keypath):
 
 
 
+def _parent_keypath(keypath):
+    '''
+        keypath = ['y', 'xx', 'x2']
+
+    '''
+    pkp = keypath[:-1]
+    return(pkp)
+
+
+
+def _parent(d,keypath):
+    '''
+    '''
+    pkp = keypath[:-1]
+    p = _getitem_via_pathlist(d,pkp)
+    return(p)
+
+
+
 
 #######################################
 def cmdpl_in_cmdpl(cmdpl1,cmdpl2,**kwargs):
@@ -1888,6 +1907,24 @@ class Edict():
         else:
             print('keypath: {0} not in '.format(keypath))
             return(None)
+    def parent_keypath(self,keypath):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            pkp = keypath[:-1]
+            return(pkp)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def parent(self,keypath):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            pkp = keypath[:-1]
+            v = _getitem_via_pathlist(self.dict,pkp)
+            return(v)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+
     #@@@@@@@@
     #@@@@@@@@@@@
     def tlist(self):
