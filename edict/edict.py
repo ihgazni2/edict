@@ -339,7 +339,7 @@ def _text_cond(text,condmatch,*args):
     else:
         return(condmatch(text,*args))
 
-def _cond_select_via_key_nonrecur(d,cond_match=None,**kwargs):
+def _cond_select_key_nonrecur(d,cond_match=None,**kwargs):
     '''
         d = {
             "ActiveArea":"50829", 
@@ -352,10 +352,10 @@ def _cond_select_via_key_nonrecur(d,cond_match=None,**kwargs):
             "AsShotNeutral":"50728",          
             "AsShotWhiteXY":"50729"
         }
-        _cond_select_via_key_nonrecur(d,"An")
-        _cond_select_via_key_nonrecur(d,"As")
+        _cond_select_key_nonrecur(d,"An")
+        _cond_select_key_nonrecur(d,"As")
         regex = re.compile("e$")
-        _cond_select_via_key_nonrecur(d,regex)
+        _cond_select_key_nonrecur(d,regex)
     '''
     if('cond_func' in kwargs):
         cond_func = kwargs['cond_func']
@@ -409,7 +409,7 @@ def _cond_select_via_value_nonrecur(d,cond_match=None,**kwargs):
     return(rslt)
 
 
-def _cond_select_via_leaf_value(d,cond_ele,*args,**kwargs):
+def _cond_select_leaf_value(d,cond_ele,*args,**kwargs):
     '''
     '''
     if('mode' in kwargs):
@@ -1492,7 +1492,7 @@ def _get_rvmat(d):
 
 #######################
 
-def _cond_select_via_key(d,cond_ele,*args,**kwargs):
+def _cond_select_key(d,cond_ele,*args,**kwargs):
     '''
     '''
     if('mode' in kwargs):
@@ -1623,10 +1623,10 @@ class Edict():
             #very special in __getitem__
             pl = list(args)
         return(_getitem_via_pathlist(self.dict,pl))
-    def cond_select_via_key(self,cond_ele,*args,**kwargs):
-        return(_cond_select_via_key(self.dict,cond_ele,*args,**kwargs))
-    def cond_select_via_leaf_value(self,cond_ele,*args,**kwargs):
-        return(_cond_select_via_leaf_value(self.dict,cond_ele,*args,**kwargs))
+    def cond_select_key(self,cond_ele,*args,**kwargs):
+        return(_cond_select_key(self.dict,cond_ele,*args,**kwargs))
+    def cond_select_leaf_value(self,cond_ele,*args,**kwargs):
+        return(_cond_select_leaf_value(self.dict,cond_ele,*args,**kwargs))
     def __setitem__(self,*args,**kwargs):
         #very special in __setitem__
         if(isinstance(args[0],tuple)):
