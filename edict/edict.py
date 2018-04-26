@@ -416,7 +416,7 @@ def _cond_select_via_leaf_value(d,cond_ele,*args,**kwargs):
         mode = kwargs['mode']
     else:
         mode = 'loose'
-    tr,vnest = _d2kvmatrix(self.dict)
+    tr,vnest = _d2kvmatrix(d)
     vltr = elel.ListTree(vnest)
     flat = vltr.flatten()
     t = type(cond_ele)
