@@ -373,7 +373,7 @@ def _cond_select_via_key_nonrecur(d,cond_match=None,**kwargs):
             pass
     return(rslt)
 
-def _cond_select_via_value(d,cond_match=None,**kwargs):
+def _cond_select_via_value_nonrecur(d,cond_match=None,**kwargs):
     '''
         d = {
             "ActiveArea":"50829", 
@@ -386,10 +386,10 @@ def _cond_select_via_value(d,cond_match=None,**kwargs):
             "AsShotNeutral":"50728",          
             "AsShotWhiteXY":"50729"
         }
-        _cond_select_via_value(d,"50")
-        _cond_select_via_value(d,"72")
+        _cond_select_via_value_nonrecur(d,"50")
+        _cond_select_via_value_nonrecur(d,"72")
         regex = re.compile("8$")
-        _cond_select_via_value(d,regex)
+        _cond_select_via_value_nonrecur(d,regex)
     '''
     if('cond_func' in kwargs):
         cond_func = kwargs['cond_func']
@@ -406,6 +406,36 @@ def _cond_select_via_value(d,cond_match=None,**kwargs):
             rslt[key] = d[key]
         else:
             pass
+    return(rslt)
+
+
+def _cond_select_via_leaf_value(d,cond_ele,*args,**kwargs):
+    '''
+    '''
+    if('mode' in kwargs):
+        mode = kwargs['mode']
+    else:
+        mode = 'loose'
+    tr,vnest = _d2kvmatrix(self.dict)
+    vltr = elel.ListTree(vnest)
+    flat = vltr.flatten()
+    t = type(cond_ele)
+    if(t == type('')):
+        if(mode == 'loose'):
+            rslt = elel.select_loose_in(flat,cond_ele)
+        else:
+            rslt = elel.select_strict_in(flat,cond_ele)
+    elif(t == type(re.compile(''))):
+        rslt = elel.select_regex_in(flat,cond_ele)
+    elif(t == type(lambda x:x)):
+        cond_func = cond_ele
+        if('cond_func_args' in kwargs):
+            cond_func_args = kwargs['cond_func_args']
+        else:
+            cond_func_args = []
+        rslt = elel.cond_select_values_all2(flat,cond_func=cond_func, cond_func_args = cond_func_args)
+    else:
+        rslt = flat
     return(rslt)
 
 
@@ -1595,8 +1625,8 @@ class Edict():
         return(_getitem_via_pathlist(self.dict,pl))
     def cond_select_via_key(self,cond_ele,*args,**kwargs):
         return(_cond_select_via_key(self.dict,cond_ele,*args,**kwargs))
-    def cond_select_via_value(self,cond_ele,*args,**kwargs):
-        return(_cond_select_via_value(self.dict,cond_ele,*args,**kwargs))
+    def cond_select_via_leaf_value(self,cond_ele,*args,**kwargs):
+        return(_cond_select_via_leaf_value(self.dict,cond_ele,*args,**kwargs))
     def __setitem__(self,*args,**kwargs):
         #very special in __setitem__
         if(isinstance(args[0],tuple)):
