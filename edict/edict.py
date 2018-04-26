@@ -24,7 +24,26 @@ import estring.estring as eses
 
 #######################################
 
+def _ancestor_keypaths(keypath):
+    '''
+        keypath = ['y', 'xx', 'x2']
+        
+    '''
+    akps = elel.ListTree.ancestlize(keypath)
+    return(akps)
 
+
+def _ancestors(d,keypath):
+    '''
+    '''
+    akps = elel.ListTree.ancestlize(keypath)
+    ancs = elel.array_map(akps,_getitem_via_pathlist2,d)
+    return(ancs)
+
+
+
+
+#######################################
 def cmdpl_in_cmdpl(cmdpl1,cmdpl2,**kwargs):
     cmd_pl1 = copy.deepcopy(cmdpl1)
     cmd_pl2 = copy.deepcopy(cmdpl2)
@@ -1853,6 +1872,22 @@ class Edict():
         else:
             pass
         return(tr)
+    def ancestor_keypaths(self,keypath):
+        cond = _include_pathlist(self.dict,keypath) 
+        if(cond):
+            akps = _ancestor_keypaths(keypath)
+            return(akps)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def ancestors(self,keypath):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            ans = _ancestors(self.dict,keypath)
+            return(ans)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
     #@@@@@@@@
     #@@@@@@@@@@@
     def tlist(self):
