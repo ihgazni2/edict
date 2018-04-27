@@ -95,10 +95,7 @@
 ├──67. [descendant_keypaths\<1\>](edict/Images/descendants.1.png)  <br>
 ├──68. [descendants\<0\>](edict/Images/descendants.0.png)  <br>
 ├──69. [descendants\<1\>](edict/Images/descendants.1.png)  <br>
-
-#From py3.6, the dict is ordered, try below in 3.6+
-
-├──42. [](edict/Images/.0.png)  <br>
+├──70. [#_From py3.6, the dict is ordered, try below in 3.6+_](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──41. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
