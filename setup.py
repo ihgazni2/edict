@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 setup(
       #name ="main" name = "edict"
       name="edict",
-      version = "0.11",
-      description="handle....,APIs",
+      version = "0.13",
+      description="handle dict,nested Dict,APIs",
       author="dapeli",
       #https://github.com/ihgazni2/main
       url="https://github.com/ihgazni2/edict",

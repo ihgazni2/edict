@@ -2010,9 +2010,9 @@ class Edict():
             print('keypath: {0} not in '.format(keypath))
             return(None)
     def lsib_path(self,keypath,**kwargs):
-        return(self.prevSibPath(self,keypath,**kwargs))
+        return(self.prevSibPath(keypath,**kwargs))
     def lsib(self,keypath,**kwargs):
-        return(self.prevSibling(self,keypath,**kwargs))
+        return(self.prevSibling(keypath,**kwargs))
     #@@@@@@@@
     #@@@@@@@@@@@
     def tlist(self):
