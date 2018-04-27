@@ -1723,6 +1723,36 @@ def get_kdmat_loc(kdmat,keypath):
     index = elel.cond_select_indexes_all(level,cond_func=cond_func,cond_func_args =[keypath])[0]
     return((lngth,index))
 
+#######################
+
+def get_vndmat_attr(d,keypath,attr,**kwargs):
+    '''
+        get_vndmat_attr(d,['x'],'lsib_path',path2keypath=True)
+        get_vndmat_attr(d,['t'],'lsib_path',path2keypath=True)
+        get_vndmat_attr(d,['u'],'lsib_path',path2keypath=True)
+        get_vndmat_attr(d,['y'],'lsib_path',path2keypath=True)
+    '''
+    kt,vn = _d2kvmatrix(d)
+    kdmat = _scankm(kt)
+    ltree = elel.ListTree(vn)
+    vndmat = ltree.desc
+    loc = get_kdmat_loc(kdmat,keypath)
+    rslt = vndmat[loc[0]][loc[1]][attr]
+    if(rslt == None):
+        pass
+    else:
+        if('path2loc' in kwargs):
+            rslt = ltree.path2loc(rslt)
+        else:
+            pass
+        if('path2keypath' in kwargs):
+            nloc = ltree.path2loc(rslt)
+            rslt = kdmat[nloc[0]][nloc[1]]['path']
+        else:
+            pass
+    return(rslt)
+
+
 ######################
 #refer to elist APIs for next development 
 ######################
@@ -1964,6 +1994,25 @@ class Edict():
         else:
             print('keypath: {0} not in '.format(keypath))
             return(None)
+    def prevSibPath(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            return(get_vndmat_attr(d,keypath,'lsib_path',path2keypath=True))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def prevSibling(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            pl = get_vndmat_attr(self.dict,keypath,'lsib_path',path2keypath=True)
+            return(_getitem_via_pathlist(self.dict,pl))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def lsib_path(self,keypath,**kwargs):
+        return(self.prevSibPath(self,keypath,**kwargs))
+    def lsib(self,keypath,**kwargs):
+        return(self.prevSibling(self,keypath,**kwargs))
     #@@@@@@@@
     #@@@@@@@@@@@
     def tlist(self):
