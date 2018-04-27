@@ -1405,7 +1405,7 @@ def _descmat_non_leaf_handler(desc,pdesc):
         pdesc['non_leaf_descendant_paths'] = cpnldpl
         pdesc['non_leaf_descendant_paths'].append(cpkpl)
     else:
-        pdesc['non_leaf_descendant_paths'].extend(cpldpl)
+        pdesc['non_leaf_descendant_paths'].extend(cpnldpl)
         pdesc['non_leaf_descendant_paths'].append(cpkpl)
 
 def _acc_sons_count(desc):
