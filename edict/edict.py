@@ -1997,7 +1997,7 @@ class Edict():
     def prevSibPath(self,keypath,**kwargs):
         cond = _include_pathlist(self.dict,keypath)
         if(cond):
-            return(get_vndmat_attr(d,keypath,'lsib_path',path2keypath=True))
+            return(get_vndmat_attr(self.dict,keypath,'lsib_path',path2keypath=True))
         else:
             print('keypath: {0} not in '.format(keypath))
             return(None)
