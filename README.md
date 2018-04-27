@@ -91,10 +91,10 @@
 ├──63. [parent_keypath\<1\>](edict/Images/parent.1.png)  <br>
 ├──64. [parent\<0\>](edict/Images/parent.0.png)  <br>
 ├──65. [parent\<1\>](edict/Images/parent.1.png)  <br>
-├──66. [](edict/Images/.0.png)  <br>
-├──67. [](edict/Images/.0.png)  <br>
-├──68. [](edict/Images/.0.png)  <br>
-├──69. [](edict/Images/.0.png)  <br>
+├──66. [descendant_keypaths\<0\>](edict/Images/descendants.0.png)  <br>
+├──67. [descendant_keypaths\<1\>](edict/Images/descendants.1.png)  <br>
+├──68. [descendants\<0\>](edict/Images/descendants.0.png)  <br>
+├──69. [descendants\<1\>](edict/Images/descendants.1.png)  <br>
 ├──70. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
