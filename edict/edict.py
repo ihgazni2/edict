@@ -1699,7 +1699,7 @@ def get_kdmat_loc(kdmat,keypath):
     lngth = keypath.__len__()
     level = kdmat[lngth]
     def cond_func(ele,keypath):
-        cond = (ele['path'] == keypath)
+        cond = (ele['path'] == [keypath])
         return(cond)
     index = elel.cond_select_indexes_all(level,cond_func=cond_func,cond_func_args =[keypath])[0]
     return((lngth,index))
