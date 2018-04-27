@@ -61,9 +61,9 @@ def _parent(d,keypath):
 
 
 def _descendant_keypaths(d,keypath,**kwargs):
-    kt,vn = eded._d2kvmatrix(d)
-    kdmat = eded._scankm(kt)
-    loc = eded.get_kdmat_loc(kdmat,keypath)
+    kt,vn = _d2kvmatrix(d)
+    kdmat = _scankm(kt)
+    loc = get_kdmat_loc(kdmat,keypath)
     ldps = kdmat[loc[0]][loc[1]]['leaf_descendant_paths']
     nldps = kdmat[loc[0]][loc[1]]['non_leaf_descendant_paths']
     if('leaf_only' in kwargs):
