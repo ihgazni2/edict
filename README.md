@@ -95,7 +95,18 @@
 ├──67. [descendant_keypaths\<1\>](edict/Images/descendants.1.png)  <br>
 ├──68. [descendants\<0\>](edict/Images/descendants.0.png)  <br>
 ├──69. [descendants\<1\>](edict/Images/descendants.1.png)  <br>
-├──70. **_From py3.6, the dict is ordered, try below in 3.6+_**<br>
+├──  . **_From py3.6, the dict is ordered, try below in 3.6+_**<br>
+├──70. [prevSibPath\<0\>](edict/Images/lsib.0.png)  <br>
+├──71. [prevSibPath\<1\>](edict/Images/lsib.1.png)  <br>
+├──72. [prevSibling\<0\>](edict/Images/lsib.0.png)  <br>
+├──73. [prevSibling\<1\>](edict/Images/lsib.1.png)  <br>
+├──74. [lsib_path\<0\>](edict/Images/lsib.0.png)  <br>
+├──75. [lsib_path\<1\>](edict/Images/lsib.1.png)  <br>
+├──76. [lsib\<0\>](edict/Images/lsib.0.png)  <br>
+├──77. [lsib\<1\>](edict/Images/lsib.1.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──41. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──41. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
@@ -104,6 +115,23 @@
 ├──41. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──41. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──41. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──41. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──41. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──41. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──41. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──41. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
+├──41. [](edict/Images/.0.png)  <br>
+├──42. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──41. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
