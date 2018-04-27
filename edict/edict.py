@@ -60,6 +60,25 @@ def _parent(d,keypath):
     return(p)
 
 
+def _descendant_keypaths(d,keypath,**kwargs):
+    kt,vn = eded._d2kvmatrix(d)
+    kdmat = eded._scankm(kt)
+    loc = eded.get_kdmat_loc(kdmat,keypath)
+    ldps = kdmat[loc[0]][loc[1]]['leaf_descendant_paths']
+    nldps = kdmat[loc[0]][loc[1]]['non_leaf_descendant_paths']
+    if('leaf_only' in kwargs):
+        return(copy.deepcopy(ldps))
+    elif('non_leaf_only' in kwargs):
+        return(copy.deepcopy(nldps))
+    else:
+        dkps = copy.deepcopy(ldps)
+        dkps.extend(nldps)
+        return(dkps)
+
+def _descendants(d,keypath,**kwargs):
+    dkps = _descendant_keypaths(d,keypath,**kwargs)
+    arr = elel.array_map(dkps,_getitem_via_pathlist2,d)
+    return(arr)
 
 
 #######################################
@@ -1931,7 +1950,20 @@ class Edict():
         else:
             print('keypath: {0} not in '.format(keypath))
             return(None)
-
+    def descendant_keypaths(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            return(_descendant_keypaths(self.dict,keypath,**kwargs))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def descendants(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            return(_descendants(self.dict,keypath,**kwargs))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
     #@@@@@@@@
     #@@@@@@@@@@@
     def tlist(self):
