@@ -41,27 +41,27 @@ def _get_sib_paths(d,keypath,**kwargs):
 
 
 def _tree_paths(d,**kwargs):
-        dpth = _get_depth(d)
-        if('leaf_only' in kwargs):
-            leaf_only = kwargs['leaf_only']
-        else:
-            leaf_only = False
-        if('non_leaf_only' in kwargs):
-            non_leaf_only = kwargs['non_leaf_only']
-        else:
-            non_leaf_only = False
-        if('from_lv' in kwargs):
-            from_lv = kwargs['from_lv']
-        else:
-            from_lv = 1
-        if('to_lv' in kwargs):
-            to_lv = kwargs['to_lv']
-        else:
-            to_lv = dpth
-        if('show' in kwargs):
-            show = kwargs['show']
-        else:
-            show = True
+    dpth = _get_depth(d)
+    if('leaf_only' in kwargs):
+        leaf_only = kwargs['leaf_only']
+    else:
+        leaf_only = False
+    if('non_leaf_only' in kwargs):
+        non_leaf_only = kwargs['non_leaf_only']
+    else:
+        non_leaf_only = False
+    if('from_lv' in kwargs):
+        from_lv = kwargs['from_lv']
+    else:
+        from_lv = 1
+    if('to_lv' in kwargs):
+        to_lv = kwargs['to_lv']
+    else:
+        to_lv = dpth
+    if('show' in kwargs):
+        show = kwargs['show']
+    else:
+        show = True
     kdfs = _get_kdfs(d)
     tr = elel.filter(kdfs,kmdfs_cond_func,d,from_lv,to_lv,leaf_only,non_leaf_only)
     if(show):
