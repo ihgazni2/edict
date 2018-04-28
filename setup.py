@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 setup(
       #name ="main" name = "edict"
       name="edict",
-      version = "0.14",
+      version = "0.15",
       description="handle dict,nested Dict,APIs",
       author="dapeli",
       #https://github.com/ihgazni2/main

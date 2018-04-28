@@ -2032,6 +2032,36 @@ class Edict():
         return(self.nextSibPath(keypath,**kwargs))
     def rsib(self,keypath,**kwargs):
         return(self.nextSibling(keypath,**kwargs))
+    def lcin_path(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            return(get_vndmat_attr(self.dict,keypath,'lcin_path',path2keypath=True))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def lcin(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            pl = get_vndmat_attr(self.dict,keypath,'lcin',path2keypath=True)
+            return(_getitem_via_pathlist(self.dict,pl))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def rcin_path(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            return(get_vndmat_attr(self.dict,keypath,'rcin_path',path2keypath=True))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def rcin(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            pl = get_vndmat_attr(self.dict,keypath,'rcin',path2keypath=True)
+            return(_getitem_via_pathlist(self.dict,pl))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
     #@@@@@@@@
     #@@@@@@@@@@@
     def tlist(self):
