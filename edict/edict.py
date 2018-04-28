@@ -2162,7 +2162,55 @@ class Edict():
             return(elel.array_map(sibpls,_getitem_via_pathlist2,self.dict))
         else:
             print('keypath: {0} not in '.format(keypath))
-            return(None)            
+            return(None)
+    ######################################################################################
+    def some_sib_paths(self,keypath,*args,**kwargs):
+        args = list(args)
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            rslt = _get_sib_paths(self.dict,keypath,**kwargs)
+            rslt = elel.select_seqs(args)
+            return(rslt)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def some_sibs(self,keypath,*args,**kwargs):
+        args = list(args)
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            sibpls = _get_sib_paths(self.dict,keypath,**kwargs)
+            sibpls = elel.select_seqs(args)
+            return(elel.array_map(sibpls,_getitem_via_pathlist2,self.dict))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def someSibPaths(self,keypath,*args,**kwargs):
+        return(self.some_sib_paths(keypath,*args,**kwargs))
+    def someSibs(self,keypath,*args,**kwargs):
+        return(self.someSibs(keypath,*args,**kwargs))
+    ######################################################################################
+    def which_sib_path(self,keypath,which,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            sibpls = _get_sib_paths(self.dict,keypath,**kwargs)
+            which = sibpls[which]
+            return(which)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def which_sib(self,keypath,which,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            sibpls = _get_sib_paths(self.dict,keypath,**kwargs)
+            which = sibpls[which]
+            return(_getitem_via_pathlist(self.dict,which))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def whichSibPaths(self,keypath,which,**kwargs):
+        return(self.which_sib_path(keypath,which,**kwargs))
+    def whichSib(self,keypath,which,**kwargs):
+        return(self.which_sib(keypath,which,**kwargs))   
     ######################################################################################
     def tlist(self):
         return(dict2tlist(self.dict))
