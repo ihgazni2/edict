@@ -2164,6 +2164,56 @@ class Edict():
             print('keypath: {0} not in '.format(keypath))
             return(None)
     ######################################################################################
+    def precedingSibPaths(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            sibpls = _get_sib_paths(self.dict,keypath,**kwargs)
+            index = sibpls.index(keypath)
+            sibpls = sibpls[:index] 
+            return(sibpls)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def precedingSibs(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            sibpls = _get_sib_paths(self.dict,keypath,**kwargs)
+            index = sibpls.index(keypath)
+            sibpls = sibpls[:index]
+            return(elel.array_map(sibpls,_getitem_via_pathlist2,self.dict))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def preceding_sib_paths(self,keypath,**kwargs):
+        return(self.precedingSibPaths(keypath,**kwargs))
+    def preceding_sibs(self,keypath,**kwargs):
+        return(self.precedingSibs(keypath,**kwargs))
+    ######################################################################################
+    def followingSibPaths(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            sibpls = _get_sib_paths(self.dict,keypath,**kwargs)
+            index = sibpls.index(keypath)
+            sibpls = sibpls[(index+1):]
+            return(sibpls)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def followingSibs(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            sibpls = _get_sib_paths(self.dict,keypath,**kwargs)
+            index = sibpls.index(keypath)
+            sibpls = sibpls[(index+1):]
+            return(elel.array_map(sibpls,_getitem_via_pathlist2,self.dict))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def following_sib_paths(self,keypath,**kwargs):
+        return(self.followingSibPaths(keypath,**kwargs))
+    def following_sibs(self,keypath,**kwargs):
+        return(self.followingSibs(keypath,**kwargs))
+    ######################################################################################
     def some_sib_paths(self,keypath,*args,**kwargs):
         args = list(args)
         cond = _include_pathlist(self.dict,keypath)
