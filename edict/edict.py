@@ -2013,6 +2013,25 @@ class Edict():
         return(self.prevSibPath(keypath,**kwargs))
     def lsib(self,keypath,**kwargs):
         return(self.prevSibling(keypath,**kwargs))
+    def nextSibPath(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            return(get_vndmat_attr(self.dict,keypath,'rsib_path',path2keypath=True))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def nextSibling(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            pl = get_vndmat_attr(self.dict,keypath,'rsib_path',path2keypath=True)
+            return(_getitem_via_pathlist(self.dict,pl))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def rsib_path(self,keypath,**kwargs):
+        return(self.nextSibPath(keypath,**kwargs))
+    def rsib(self,keypath,**kwargs):
+        return(self.nextSibling(keypath,**kwargs))
     #@@@@@@@@
     #@@@@@@@@@@@
     def tlist(self):
