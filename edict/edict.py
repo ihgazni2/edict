@@ -24,6 +24,56 @@ import estring.estring as eses
 
 #######################################
 
+def _get_depth(d):
+    kt,vn = _d2kvmatrix(d)
+    dpth = kt.__len__()
+    return(dpth)
+
+
+def _get_sib_paths(d,keypath,**kwargs):
+    '''
+        
+    '''
+    lngth = keypath.__len__()
+    kwargs['from_lv'] = lngth
+    kwargs['to_lv'] = lngth 
+    return(_tree_paths(d,**kwargs))
+
+
+def _tree_paths(d,**kwargs):
+        dpth = _get_depth(d)
+        if('leaf_only' in kwargs):
+            leaf_only = kwargs['leaf_only']
+        else:
+            leaf_only = False
+        if('non_leaf_only' in kwargs):
+            non_leaf_only = kwargs['non_leaf_only']
+        else:
+            non_leaf_only = False
+        if('from_lv' in kwargs):
+            from_lv = kwargs['from_lv']
+        else:
+            from_lv = 1
+        if('to_lv' in kwargs):
+            to_lv = kwargs['to_lv']
+        else:
+            to_lv = dpth
+        if('show' in kwargs):
+            show = kwargs['show']
+        else:
+            show = True
+    kdfs = _get_kdfs(d)
+    tr = elel.filter(kdfs,kmdfs_cond_func,d,from_lv,to_lv,leaf_only,non_leaf_only)
+    if(show):
+        elel.forEach(tr,print)
+    else:
+        pass
+    return(tr)
+
+
+
+
+#######################################
 def _ancestor_keypaths(keypath):
     '''
         keypath = ['y', 'xx', 'x2']
@@ -2042,7 +2092,7 @@ class Edict():
     def lcin(self,keypath,**kwargs):
         cond = _include_pathlist(self.dict,keypath)
         if(cond):
-            pl = get_vndmat_attr(self.dict,keypath,'lcin',path2keypath=True)
+            pl = get_vndmat_attr(self.dict,keypath,'lcin_path',path2keypath=True)
             return(_getitem_via_pathlist(self.dict,pl))
         else:
             print('keypath: {0} not in '.format(keypath))
@@ -2057,13 +2107,63 @@ class Edict():
     def rcin(self,keypath,**kwargs):
         cond = _include_pathlist(self.dict,keypath)
         if(cond):
-            pl = get_vndmat_attr(self.dict,keypath,'rcin',path2keypath=True)
+            pl = get_vndmat_attr(self.dict,keypath,'rcin_path',path2keypath=True)
             return(_getitem_via_pathlist(self.dict,pl))
         else:
             print('keypath: {0} not in '.format(keypath))
             return(None)
-    #@@@@@@@@
-    #@@@@@@@@@@@
+    ######################################################################################
+    def sons(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            lpl = get_vndmat_attr(self.dict,keypath,'leaf_son_paths',path2keypath=True)
+            lpl = copy.deepcopy(lpl)
+            nlpl = get_vndmat_attr(self.dict,keypath,'non_leaf_son_paths',path2keypath=True)
+            nlpl = copy.deepcopy(nlpl)
+            if('leaf_only' in kwargs):
+                return(elel.array_map(lpl,_getitem_via_pathlist2,self.dict))
+            elif('non_leaf_only' in kwargs):
+                return(elel.array_map(nlpl,_getitem_via_pathlist2,self.dict))
+            else:
+                lpl.extend(nlpl)
+                return(elel.array_map(lpl,_getitem_via_pathlist2,self.dict))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def son_paths(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            lpl = get_vndmat_attr(self.dict,keypath,'leaf_son_paths',path2keypath=True)
+            lpl = copy.deepcopy(lpl)
+            nlpl = get_vndmat_attr(self.dict,keypath,'non_leaf_son_paths',path2keypath=True)
+            nlpl = copy.deepcopy(nlpl)
+            if('leaf_only' in kwargs):
+                return(pl)
+            elif('non_leaf_only' in kwargs):
+                return(nlpl)
+            else:
+                lpl.extend(nlpl)
+                return(lpl)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def sib_paths(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            rslt = _get_sib_paths(self.dict,keypath,**kwargs)
+            return(rslt)
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)
+    def sibs(self,keypath,**kwargs):
+        cond = _include_pathlist(self.dict,keypath)
+        if(cond):
+            sibpls = _get_sib_paths(self.dict,keypath,**kwargs)
+            return(elel.array_map(sibpls,_getitem_via_pathlist2,self.dict))
+        else:
+            print('keypath: {0} not in '.format(keypath))
+            return(None)            
+    ######################################################################################
     def tlist(self):
         return(dict2tlist(self.dict))
     def mirrable(self):
