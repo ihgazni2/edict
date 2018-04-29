@@ -1799,7 +1799,7 @@ def get_vndmat_attr(d,keypath,attr,**kwargs):
             nlocs = elel.array_map(rslt,ltree.path2loc)
             def cond_func(ele,kdmat):
                 return(kdmat[ele[0]][ele[1]]['path'])
-            rslt = elel.array_map(rslt,cond_func,kdmat)
+            rslt = elel.array_map(nlocs,cond_func,kdmat)
         else:
             pass        
     else:
