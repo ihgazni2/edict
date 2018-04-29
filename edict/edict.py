@@ -2249,7 +2249,7 @@ class Edict():
     def someSibPaths(self,keypath,*args,**kwargs):
         return(self.some_sib_paths(keypath,*args,**kwargs))
     def someSibs(self,keypath,*args,**kwargs):
-        return(self.someSibs(keypath,*args,**kwargs))
+        return(self.some_sibs(keypath,*args,**kwargs))
     ######################################################################################
     def which_sib_path(self,keypath,which,**kwargs):
         cond = _include_pathlist(self.dict,keypath)
