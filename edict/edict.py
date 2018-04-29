@@ -2231,7 +2231,7 @@ class Edict():
         cond = _include_pathlist(self.dict,keypath)
         if(cond):
             rslt = _get_sib_paths(self.dict,keypath,**kwargs)
-            rslt = elel.select_seqs(args)
+            rslt = elel.select_seqs(rslt,args)
             return(rslt)
         else:
             print('keypath: {0} not in '.format(keypath))
@@ -2241,7 +2241,7 @@ class Edict():
         cond = _include_pathlist(self.dict,keypath)
         if(cond):
             sibpls = _get_sib_paths(self.dict,keypath,**kwargs)
-            sibpls = elel.select_seqs(args)
+            sibpls = elel.select_seqs(sibpls,args)
             return(elel.array_map(sibpls,_getitem_via_pathlist2,self.dict))
         else:
             print('keypath: {0} not in '.format(keypath))
