@@ -112,10 +112,10 @@
 ├──42. [rsib_path\<1\>](edict/Images/rsib.1.png)  <br>
 ├──41. [rsib\<0\>](edict/Images/rsib.0.png)  <br>
 ├──42. [rsib\<1\>](edict/Images/rsib.1.png)  <br>
-├──41. [](edict/Images/.0.png)  <br>
-├──42. [](edict/Images/.0.png)  <br>
-├──41. [](edict/Images/.0.png)  <br>
-├──42. [](edict/Images/.0.png)  <br>
+├──41. [lcin\<0\>](edict/Images/lcin.0.png)  <br>
+├──42. [lcin\<1\>](edict/Images/lcin.1.png)  <br>
+├──41. [rcin\<0\>](edict/Images/rcin.0.png)  <br>
+├──42. [rcin\<1\>](edict/Images/rcin.1.png)  <br>
 ├──41. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
