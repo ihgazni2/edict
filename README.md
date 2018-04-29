@@ -116,10 +116,10 @@
 ├──42. [lcin\<1\>](edict/Images/lcin.1.png)  <br>
 ├──41. [rcin\<0\>](edict/Images/rcin.0.png)  <br>
 ├──42. [rcin\<1\>](edict/Images/rcin.1.png)  <br>
-├──41. [](edict/Images/.0.png)  <br>
-├──42. [](edict/Images/.0.png)  <br>
-├──42. [](edict/Images/.0.png)  <br>
-├──41. [](edict/Images/.0.png)  <br>
+├──41. [sons\<0\>](edict/Images/sons.0.png)  <br>
+├──42. [sons\<1\>](edict/Images/sons.1.png)  <br>
+├──42. [sibs\<0\>](edict/Images/sibs.0.png)  <br>
+├──41. [sibs\<1\>](edict/Images/sibs.1.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──41. [](edict/Images/.0.png)  <br>
