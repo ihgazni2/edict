@@ -1363,5 +1363,8 @@ keypath = ['y']
     
 
 ##################
-
-    
+################################################
+# 需要等crtable 和ltdict 改造完毕
+# crtable.max_cols_in_table_via_rows_dict(kdfs)
+# cratble.padding_rows(kdfs)
+################################################# 
