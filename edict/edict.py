@@ -1790,6 +1790,18 @@ def get_vndmat_attr(d,keypath,attr,**kwargs):
     rslt = vndmat[loc[0]][loc[1]][attr]
     if(rslt == None):
         pass
+    elif(elel.is_matrix(rslt,mode='loose')):
+        if('path2loc' in kwargs):
+            rslt = elel.array_map(rslt,ltree.path2loc)
+        else:
+            pass
+        if('path2keypath' in kwargs):
+            nlocs = elel.array_map(rslt,ltree.path2loc)
+            def cond_func(ele,kdmat):
+                return(kdmat[ele[0]][ele[1]]['path'])
+            rslt = elel.array_map(rslt,cond_func,kdmat)
+        else:
+            pass        
     else:
         if('path2loc' in kwargs):
             rslt = ltree.path2loc(rslt)
