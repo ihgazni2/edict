@@ -12,6 +12,7 @@
 -----------------------------------------------------------------------
 >├──0. [\_\_init\_\_](edict/Images/__init__.0.png) <br>
 ├──1. [\_\_repr\_\_](edict/Images/__repr__.0.png)  <br>
+├──2. [sub](edict/Images/sub.0.png) <br>
 ├──2. [keypaths\<0\>](edict/Images/keypaths.0.png)  <br>
 ├──2. [keypaths\<1\>](edict/Images/keypaths.1.png)  <br>
 ├──2. [keypaths\<2\>](edict/Images/keypaths.2.png)  <br>
