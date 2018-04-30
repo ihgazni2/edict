@@ -24,6 +24,28 @@ import estring.estring as eses
 
 #######################################
 
+def _select_norecur(d,*ks,**kwargs):
+    ks = list(ks)
+    lngth = ks.__len__()
+    if('deepcopy' in kwargs):
+        deepcopy = kwargs['deepcopy']
+    else:
+        deepcopy = True
+    if(deepcopy):
+        nd = copy.deepcopy(d)
+    else:
+        nd = d
+    rslt = {}
+    for i in range(0,lngth):
+        k = ks[i]
+        if(k in nd):
+            rslt[k] = nd[k]
+        else:
+            pass
+    return(rslt)
+
+
+
 def _get_depth(d):
     kt,vn = _d2kvmatrix(d)
     dpth = kt.__len__()
@@ -1834,10 +1856,10 @@ class Edict():
             kl = args[0]
             vl = args[1]
             self.dict = kvlist2d(kl,vl)
+    def sub(self,*ks,**kwargs):
+        sd = _select_norecur(self.dict,*ks,**kwargs)
+        return(sd)
     def klist(self):
-        '''
-            
-        '''
         kl,vl = d2kvlist(self.dict)
         return(kl)
     def vlist(self):
