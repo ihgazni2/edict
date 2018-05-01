@@ -2,7 +2,8 @@ import re
 import copy
 import elist.elist as elel
 import estring.estring as eses
-
+import functools
+import tlist.tlist as tltl
 
 ######################################
 
@@ -21,6 +22,55 @@ import estring.estring as eses
 
 
 #是否使用lasy 模式 很纠结，这个Lib纯当一个实验品吧
+
+######################################
+
+def _reorder_via_klist(d,nkl,**kwargs):
+    '''
+        d = {'scheme': 'http', 'path': '/index.php', 'params': 'params', 'query': 'username=query', 'fragment': 'frag', 'username': '', 'password': '', 'hostname': 'www.baidu.com', 'port': ''}
+        pobj(d)
+        nkl = ['scheme', 'username', 'password', 'hostname', 'port', 'path', 'params', 'query', 'fragment']
+        pobj(_reorder_via_klist(d,nkl))
+    '''
+    if('deepcopy' in kwargs):
+        deepcopy = kwargs['deepcopy']
+    else:
+        deepcopy = True
+    if(deepcopy):
+        d = copy.deepcopy(d)
+    else:
+        pass
+    nd = {}
+    lngth = nkl.__len__()
+    for i in range(0,lngth):
+        k = nkl[i]
+        nd[k] = d[k]
+    return(nd)
+
+
+
+def _reorder_via_vlist(d,nvl,**kwargs):
+    '''
+    '''
+    if('deepcopy' in kwargs):
+        deepcopy = kwargs['deepcopy']
+    else:
+        deepcopy = True
+    if(deepcopy):
+        d = copy.deepcopy(d)
+    else:
+        pass
+    nd = {}
+    lngth = nvl.__len__()
+    for i in range(0,lngth):
+        v = nvl[i]
+        ks = _keys_via_value_nonrecur(d,v)
+        for j in range(0,ks.__len__()):
+            k = ks[j]
+            nd[k] = d[k]
+    return(nd)
+
+
 
 #######################################
 
@@ -537,7 +587,7 @@ def tlist2dict(tuple_list,**kwargs):
     else:
         check = 1
     if(check):
-        if(is_tlist(tuple_list)):
+        if(tltl.is_tlist(tuple_list)):
             pass
         else:
             return(None)
@@ -1884,6 +1934,12 @@ class Edict():
             kl = args[0]
             vl = args[1]
             self.dict = kvlist2d(kl,vl)
+    def reorder_via_vlist(self,nvl,**kwargs):
+        nd = _reorder_via_vlist(self.dict,nvl,**kwargs)
+        return(Edict(nd))
+    def reorder_via_klist(self,nkl,**kwargs):
+        nd = _reorder_via_klist(self.dict,nkl,**kwargs)
+        return(Edict(nd))
     def sub_via_value(self,*vs,**kwargs):
         '''
             d= {1:'a',2:'b',3:'a',4:'d',5:'e'}
@@ -1891,10 +1947,10 @@ class Edict():
             ed.sub_via_value('a','d')
         '''
         sd = _select_norecur_via_value(self.dict,*vs,**kwargs)
-        return(sd)
+        return(Edict(sd))
     def sub(self,*ks,**kwargs):
         sd = _select_norecur(self.dict,*ks,**kwargs)
-        return(sd)
+        return(Edict(sd))
     def klist(self):
         kl,vl = d2kvlist(self.dict)
         return(kl)
