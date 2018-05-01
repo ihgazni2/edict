@@ -24,6 +24,13 @@ import estring.estring as eses
 
 #######################################
 
+def _getitem2(k,d):
+    return(d[k])
+
+def _getitem(d,k):
+    return(d[k])
+
+#######################################
 def _select_norecur_via_value(d,*vs,**kwargs):
     vs = list(vs)
     lngth = vs.__len__()
