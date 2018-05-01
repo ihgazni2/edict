@@ -138,11 +138,11 @@
 ├──107. [followingSibPaths\<1\>](edict/Images/following_sibs.1.png)  <br>
 ├──108. [followingSibs\<0\>](edict/Images/following_sibs.0.png)  <br>
 ├──109. [followingSibs\<1\>](edict/Images/following_sibs.1.png)  <br>
-├──41. [reorder_via_klist](edict/Images/reorder_via_klist.0.png)  <br>
-├──42. [reorder_via_vlist](edict/Images/reorder_via_vlist.0.png)  <br>
-├──41. [sort_via_key](edict/Images/sort_via_key.0.png)  <br>
-├──42. [sort_via_value](edict/Images/sort_via_value.0.png)  <br>
-├──41. [cond_sort](edict/Images/cond_sort.0.png)  <br>
+├──110. [reorder_via_klist](edict/Images/reorder_via_klist.0.png)  <br>
+├──111. [reorder_via_vlist](edict/Images/reorder_via_vlist.0.png)  <br>
+├──112. [sort_via_key](edict/Images/sort_via_key.0.png)  <br>
+├──113. [sort_via_value](edict/Images/sort_via_value.0.png)  <br>
+├──114. [cond_sort](edict/Images/cond_sort.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──41. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
