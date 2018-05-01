@@ -97,7 +97,7 @@ def _cond_sort(d,**kwargs):
         else:
             return(1)
     ntl = sorted(tl,key=functools.cmp_to_key(cmp_func),reverse=reverse)
-    nd = tlist2dict(tl)
+    nd = tlist2dict(ntl)
     return(nd)
 
 def _reorder_via_klist(d,nkl,**kwargs):
