@@ -24,6 +24,81 @@ import tlist.tlist as tltl
 #是否使用lasy 模式 很纠结，这个Lib纯当一个实验品吧
 
 ######################################
+# From py3.6, the dict is ordered, try below in 3.6+
+
+def _sort_via_key(d,**kwargs):
+    return(_cond_sort(d,**kwargs))
+
+def _sort_via_value(d,**kwargs):
+    def eq_func(key1,key2,value1,value2):
+        cond = (value1 == value2)
+        return(cond)
+    def gt_func(key1,key2,value1,value2):
+        cond = (value1 > value2)
+        return(cond)
+    def lt_func(key1,key2,value1,value2):
+        cond = (value1 < value2)
+        return(cond)
+    return(_cond_sort(d,lt_func=lt_func,eq_func=eq_func,gt_func=gt_func,,**kwargs))
+
+
+
+def _cond_sort(d,**kwargs):
+    '''
+    '''
+    def default_eq_func(key1,key2,value1,value2):
+        cond = (key1 == key2)
+        return(cond)
+    def default_gt_func(key1,key2,value1,value2):
+        cond = (key1 > key2)
+        return(cond)
+    def default_lt_func(key1,key2,value1,value2):
+        cond = (key1 < key2)
+        return(cond)
+    if('eq_func' in kwargs):
+        eq_func = kwargs['eq_func']
+    else:
+        eq_func = default_eq_func
+    if('gt_func' in kwargs):
+        gt_func = kwargs['gt_func']
+    else:
+        gt_func = default_gt_func
+    if('lt_func' in kwargs):
+        lt_func = kwargs['lt_func']
+    else:
+        lt_func = default_lt_func
+    if('eq_func_args' in kwargs):
+        eq_func_args = kwargs['eq_func_args']
+    else:
+        eq_func_args = []
+    if('gt_func_args' in kwargs):
+        gt_func_args = kwargs['gt_func_args']
+    else:
+        gt_func_args = []
+    if('lt_func_args' in kwargs):
+        lt_func_args = kwargs['lt_func_args']
+    else:
+        lt_func_args = []
+    if('reverse' in kwargs):
+        reverse = kwargs['reverse']
+    else:
+        reverse = False
+    tl = dict2tlist(d)
+    def cmp_func(ele1,ele2):
+        '''
+        '''
+        cond1 = lt_func(ele1[0],ele2[0],ele1[1],ele2[1])
+        cond2 = eq_func(ele1[0],ele2[0],ele1[1],ele2[1])
+        cond3 = gt_func(ele1[0],ele2[0],ele1[1],ele2[1])
+        if(cond1):
+            return(-1)
+        elif(cond2):
+            return(0)
+        else:
+            return(1)
+    ntl = sorted(tl,key=functools.cmp_to_key(cmp_func),reverse=reverse)
+    nd = tlist2dict(tl)
+    return(nd)
 
 def _reorder_via_klist(d,nkl,**kwargs):
     '''
@@ -71,7 +146,7 @@ def _reorder_via_vlist(d,nvl,**kwargs):
     return(nd)
 
 
-
+# From py3.6, the dict is ordered, try upper in 3.6+
 #######################################
 
 def _getitem2(k,d):
@@ -1934,12 +2009,22 @@ class Edict():
             kl = args[0]
             vl = args[1]
             self.dict = kvlist2d(kl,vl)
+    def sort_via_key(self,**kwargs):
+        nd = _sort_via_key(self.dict,**kwargs)
+        return(Edict(nd))
+    def sort_via_value(self,**kwargs):
+        nd = _sort_via_value(self.dict,**kwargs)
+        return(Edict(nd))
+    def sort_via_cond(self,**kwargs):
+        nd = _cond_sort(self.dict,**kwargs)
+        return(Edict(nd))
     def reorder_via_vlist(self,nvl,**kwargs):
         nd = _reorder_via_vlist(self.dict,nvl,**kwargs)
         return(Edict(nd))
     def reorder_via_klist(self,nkl,**kwargs):
         nd = _reorder_via_klist(self.dict,nkl,**kwargs)
         return(Edict(nd))
+    ####
     def sub_via_value(self,*vs,**kwargs):
         '''
             d= {1:'a',2:'b',3:'a',4:'d',5:'e'}
