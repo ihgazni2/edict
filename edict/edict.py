@@ -24,6 +24,27 @@ import estring.estring as eses
 
 #######################################
 
+def _select_norecur_via_value(d,*vs,**kwargs):
+    vs = list(vs)
+    lngth = vs.__len__()
+    if('deepcopy' in kwargs):
+        deepcopy = kwargs['deepcopy']
+    else:
+        deepcopy = True
+    if(deepcopy):
+        nd = copy.deepcopy(d)
+    else:
+        nd = d
+    rslt = {}
+    for i in range(0,lngth):
+        v = vs[i]
+        ks = _keys_via_value_nonrecur(d,v)
+        for j in range(0,ks.__len__()):
+            k = ks[j]
+            rslt[k] = d[k]
+    return(rslt)
+
+
 def _select_norecur(d,*ks,**kwargs):
     ks = list(ks)
     lngth = ks.__len__()
@@ -1856,6 +1877,9 @@ class Edict():
             kl = args[0]
             vl = args[1]
             self.dict = kvlist2d(kl,vl)
+    def sub_via_value(self,*vs,**kwargs):
+        sd = _select_norecur_via_value(self.dict,*vs,**kwargs)
+        return(sd)
     def sub(self,*ks,**kwargs):
         sd = _select_norecur(self.dict,*ks,**kwargs)
         return(sd)
