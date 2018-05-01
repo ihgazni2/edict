@@ -39,7 +39,7 @@ def _sort_via_value(d,**kwargs):
     def lt_func(key1,key2,value1,value2):
         cond = (value1 < value2)
         return(cond)
-    return(_cond_sort(d,lt_func=lt_func,eq_func=eq_func,gt_func=gt_func,,**kwargs))
+    return(_cond_sort(d,lt_func=lt_func,eq_func=eq_func,gt_func=gt_func,**kwargs))
 
 
 
