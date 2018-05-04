@@ -615,7 +615,7 @@ def kvlist2d(kl,vl):
 
 #dele dict-element
 
-def dele2t(dele):
+def dele2t(d):
     '''
     '''
     k = list(d.keys())[0]
