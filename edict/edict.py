@@ -612,7 +612,14 @@ def kvlist2d(kl,vl):
         v = vl[i]
         d[k] = v
     return(d)
+####
+def list2d(arr):
+    kl = elel.select_odds(arr)
+    vl = elel.select_evens(arr)
+    d = kvlists2d(kl,vl)
+    return(d)
 
+####
 #dele dict-element
 
 def dele2t(d):

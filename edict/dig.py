@@ -31,7 +31,7 @@ def dig(root,func_is_leaf,get_children,**kwargs):
                 pass
             else:
                 children = get_children(ele,*get_children_args)
-                next_unhandled.append(children)
+                next_unhandled = elel.concat(next_unhandled,children)
         unhandled = next_unhandled
 ####
 
