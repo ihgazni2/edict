@@ -5,6 +5,8 @@ import estring.estring as eses
 import functools
 import tlist.tlist as tltl
 
+
+
 ######################################
 
 #kp                   key-path
@@ -2711,6 +2713,14 @@ def str_value_fuzzy(d,v):
     nd = sub_value_algo(d,vl)
     return(nd)
 
+
+
+def str_fuzzy(d,korv):
+    ndk = str_key_fuzzy(d,korv)
+    ndv = str_value_fuzzy(d,korv)
+    nd = _union(ndk,ndv)
+    #pobj(nd)
+    return(nd)
 ####################################
 
 
