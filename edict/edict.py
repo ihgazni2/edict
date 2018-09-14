@@ -2646,7 +2646,71 @@ class DictTree():
 
 
 
+##########################
+
+def sub_some(d,*args,**kwargs):
+    kl = list(args)
+    nd = sub_algo(d,kl,**kwargs)
+    return(nd)
+
+def sub_algo(d,kl,**kwargs):
+    if('deepcopy' in kwargs):
+        deepcopy = kwargs['deepcopy']
+    else:
+        deepcopy = True
+    if(deepcopy):
+        nd = copy.deepcopy(d)
+    else:
+        nd = d
+    nnd = {}
+    for k in kl:
+        if(k in nd):
+            nnd[k] = nd[k]
+        else:
+            pass
+    return(nnd)
 
 
+def sub_value_some(d,*args,**kwargs):
+    vl = list(args)
+    nd = sub_value_algo(d,vl,**kwargs)
+    return(nd)
+
+def sub_value_algo(d,vl,**kwargs):
+    if('deepcopy' in kwargs):
+        deepcopy = kwargs['deepcopy']
+    else:
+        deepcopy = True
+    if(deepcopy):
+        nd = copy.deepcopy(d)
+    else:
+        nd = d
+    nnd = {}
+    kl = list(d.keys())
+    for k in kl:
+        v = nd[k]
+        if(v in vl):
+            nnd[k] = nd[k]
+        else:
+            pass
+    return(nnd)
+
+
+
+
+def str_key_fuzzy(d,k):
+    arr = list(d.keys())
+    kl = elel.str_fuzzy_search(arr,k)
+    nd = sub_algo(d,kl)
+    return(nd)
+
+
+def str_value_fuzzy(d,v):
+    arr = list(d.values())
+    vl = elel.str_fuzzy_search(arr,v)
+    nd = sub_value_algo(d,vl)
+    return(nd)
+
+####################################
 
 
