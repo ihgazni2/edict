@@ -2723,4 +2723,33 @@ def str_fuzzy(d,korv):
     return(nd)
 ####################################
 
+#####################
+#json 会把数字key值如1, 变成'1'
 
+def intize(ns):
+    try:
+        n = int(ns)
+    except:
+        return(ns)
+    else:
+        return(n)
+
+def intize_json(js):
+    kpmat = _get_kpmat(js)
+    ncache = {}
+    for i in range(0,kpmat.__len__()):
+        row = kpmat[i]
+        lngth = row.__len__()
+        for j in range(0,lngth):
+            pl = row[j]
+            v =  _getitem_via_pathlist(js,pl)
+            npl = elel.array_map(pl,intize)
+            if(is_leaf(v)):
+                _setdefault_via_pathlist(ncache,npl)
+                _setitem_via_pathlist(ncache,npl,v)
+            else:
+                pass
+    return(ncache)
+
+
+#####################
