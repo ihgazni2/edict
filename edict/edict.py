@@ -5,7 +5,11 @@ import estring.estring as eses
 import functools
 import tlist.tlist as tltl
 
+#######################
 
+
+
+########################
 
 ######################################
 
@@ -1384,6 +1388,20 @@ def _d2kvmatrix(d):
         km,vm = _d2kvmatrix(d)
         d = {1: {2:{22:222}}, 3: {'a': 'b'}}
         km,vm = _d2kvmatrix(d)
+        ##
+        km: 按照层次存储pathlist,层次从0开始，
+        {
+         1: 2,
+         3:
+            {
+             'a': 'b'
+            }
+        }
+        km[0] = [[1],[3]]
+        km[1] = [[3,'a']]
+        vm: vm比较特殊，不太好理解，请参照函数elel.get_wfs 和_kvmatrix2d
+            vm的数组表示层次
+        rvmat: 与km对应，存储key对应的value,不过对应层次使km的层次+1
     '''
     km = []
     vm = [list(d.values())]
