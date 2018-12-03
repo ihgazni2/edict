@@ -1699,6 +1699,10 @@ def _scankm(km,descmat=[]):
     depth = km.__len__()
     klevel = km[depth - 1]
     lngth = klevel.__len__()
+    #
+    print(descmat)
+    print(depth)
+    #
     dlevel = descmat[depth]
     pdlevel = descmat[depth-1]
     for j in range(0,lngth):
@@ -1717,11 +1721,11 @@ def _scankm(km,descmat=[]):
         pkpl.pop(-1)
         desc['parent_path'] = pkpl
         ####
-        #if(depth < 2):
-        #    pbreadth = 0
-        #else:
-        #    pbreadth = km[depth-2].index(pkpl)
-        pbreadth = km[depth-2].index(pkpl)
+        if(depth < 2):
+            pbreadth = 0
+        else:
+            pbreadth = km[depth-2].index(pkpl)
+        #pbreadth = km[depth-2].index(pkpl)
         ####
         desc['parent_breadth'] = pbreadth
         ######
