@@ -1718,7 +1718,7 @@ def _scankm(km,descmat=[]):
         desc['parent_path'] = pkpl
         ####
         if(depth < 2):
-            pbreadth = []
+            pbreadth = 0
         else:
             pbreadth = km[depth-2].index(pkpl)
         ####
