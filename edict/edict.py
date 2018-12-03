@@ -1605,7 +1605,7 @@ def _init_descmat_root():
 def _init_descmat_via_km(km,descmat=[]):
     '''
     '''
-    ###
+    ###important to fix strange bug 
     descmat = copy.deepcopy(descmat)
     ###
     descmat_len = descmat.__len__()
