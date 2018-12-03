@@ -1605,6 +1605,9 @@ def _init_descmat_root():
 def _init_descmat_via_km(km,descmat=[]):
     '''
     '''
+    ###
+    descmat = copy.deepcopy(descmat)
+    ###
     descmat_len = descmat.__len__()
     cond = (descmat_len == 0)
     depth = km.__len__()
@@ -1702,10 +1705,6 @@ def _scankm(km,descmat=[]):
     depth = km.__len__()
     klevel = km[depth - 1]
     lngth = klevel.__len__()
-    #
-    print(descmat.__len__())
-    print(depth)
-    #
     dlevel = descmat[depth]
     pdlevel = descmat[depth-1]
     for j in range(0,lngth):
