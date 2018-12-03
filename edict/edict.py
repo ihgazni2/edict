@@ -1716,7 +1716,12 @@ def _scankm(km,descmat=[]):
         pkpl = copy.deepcopy(kpl)
         pkpl.pop(-1)
         desc['parent_path'] = pkpl
-        pbreadth = km[depth-2].index(pkpl)
+        ####
+        if(depth < 2):
+            pbreadth = []
+        else:
+            pbreadth = km[depth-2].index(pkpl)
+        ####
         desc['parent_breadth'] = pbreadth
         ######
         pdesc = pdlevel[pbreadth]
