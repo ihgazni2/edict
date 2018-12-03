@@ -521,6 +521,9 @@ def _keys_via_value(d,value,**kwargs):
     km,vm = _d2kvmatrix(d)
     rvmat = _get_rvmat(d)
     depth = rvmat.__len__()
+    ##
+    print(km)
+    ##
     kdmat = _scankm(km)
     if('leaf_only' in kwargs):
         leaf_only = kwargs['leaf_only']
