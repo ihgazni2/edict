@@ -1700,8 +1700,8 @@ def _scankm(km,descmat=[]):
     klevel = km[depth - 1]
     lngth = klevel.__len__()
     #
-    print(descmat)
-    print(depth)
+    #print(descmat)
+    #print(depth)
     #
     dlevel = descmat[depth]
     pdlevel = descmat[depth-1]
