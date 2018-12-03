@@ -522,7 +522,7 @@ def _keys_via_value(d,value,**kwargs):
     rvmat = _get_rvmat(d)
     depth = rvmat.__len__()
     ##
-    print(km)
+    #print(km)
     ##
     kdmat = _scankm(km)
     if('leaf_only' in kwargs):
@@ -1703,8 +1703,8 @@ def _scankm(km,descmat=[]):
     klevel = km[depth - 1]
     lngth = klevel.__len__()
     #
-    #print(descmat)
-    #print(depth)
+    print(descmat.__len__())
+    print(depth)
     #
     dlevel = descmat[depth]
     pdlevel = descmat[depth-1]
