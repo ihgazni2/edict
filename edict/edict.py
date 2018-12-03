@@ -1699,7 +1699,9 @@ def _scankm(km,descmat=[]):
     depth = km.__len__()
     klevel = km[depth - 1]
     lngth = klevel.__len__()
+    print("-----")
     dlevel = descmat[depth]
+    print("=====")
     pdlevel = descmat[depth-1]
     for j in range(0,lngth):
         kpl = klevel[j]
