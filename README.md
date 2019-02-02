@@ -143,10 +143,10 @@
 ├──112. [sort_via_key](edict/Images/sort_via_key.0.png)  <br>
 ├──113. [sort_via_value](edict/Images/sort_via_value.0.png)  <br>
 ├──114. [cond_sort](edict/Images/cond_sort.0.png)  <br>
-├──42. [](edict/Images/.0.png)  <br>
-├──41. [](edict/Images/.0.png)  <br>
-├──42. [](edict/Images/.0.png)  <br>
-├──41. [](edict/Images/.0.png)  <br>
+├──115. [kvlist2d](edict/Images/.0.png)  <br>
+├──116. [d2kvlist](edict/Images/.0.png)  <br>
+├──117. [d2list](edict/Images/.0.png)  <br>
+├──118. [list2d](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
 ├──41. [](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>

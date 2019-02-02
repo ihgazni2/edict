@@ -628,6 +628,13 @@ def list2d(arr):
     d = kvlist2d(kl,vl)
     return(d)
 
+def d2list(d):
+    kl = list(d.keys())
+    vl = list(d.values())
+    l = elel.interleave(kl,vl)
+    return(l)
+
+
 ####
 #dele dict-element
 
