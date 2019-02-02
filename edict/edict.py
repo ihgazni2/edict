@@ -623,8 +623,8 @@ def kvlist2d(kl,vl):
     return(d)
 ####
 def list2d(arr):
-    kl = elel.select_odds(arr)
-    vl = elel.select_evens(arr)
+    kl = elel.select_evens(arr)
+    vl = elel.select_odds(arr)
     d = kvlist2d(kl,vl)
     return(d)
 
