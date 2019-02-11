@@ -2804,3 +2804,53 @@ def intize_json(js):
 
 
 #####################
+
+
+def mapkvV(d,map_func,*map_func_other_args,**kwargs):
+    nd = copy.deepcopy(d)
+    for k in d:
+        v = d[k]
+        nd[k] = map_func(k,v,*map_func_other_args)
+    return(nd)
+
+def mapkvK(d,map_func,*map_func_other_args,**kwargs):
+    nd = copy.deepcopy(d)
+    for k in d:
+        v=d[k]
+        k = map_func(k,v,*map_func_other_args)
+        nd[k] = v
+    return(nd)
+
+
+def mapvV(d,map_func,*map_func_other_args,**kwargs):
+    nd = copy.deepcopy(d)
+    for k in d:
+        v = d[k]
+        nd[k] = map_func(v,*map_func_other_args)
+    return(nd)
+
+def mapvK(d,map_func,*map_func_other_args,**kwargs):
+    nd = copy.deepcopy(d)
+    for k in d:
+        v=d[k]
+        k = map_func(v,*map_func_other_args)
+        nd[k] = v
+    return(nd)
+
+def mapkV(d,map_func,*map_func_other_args,**kwargs):
+    nd = copy.deepcopy(d)
+    for k in d:
+        v = d[k]
+        nd[k] = map_func(k,*map_func_other_args)
+    return(nd)
+
+def mapkK(d,map_func,*map_func_other_args,**kwargs):
+    nd = copy.deepcopy(d)
+    for k in d:
+        v=d[k]
+        k = map_func(k,*map_func_other_args)
+        nd[k] = v
+    return(nd)
+
+
+
