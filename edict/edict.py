@@ -1103,7 +1103,7 @@ def _update(dict1,dict2,**kwargs):
         dict1 = copy.deepcopy(dict1)
     else:
         pass
-    dict1 = _extend(dict1,dict2,overwrite=True)
+    dict1 = _extend(dict1,dict2,overwrite=True,deepcopy=deepcopy)
     return(dict1)
 
 #important and special func
@@ -2854,8 +2854,11 @@ def mapkK(d,map_func,*map_func_other_args,**kwargs):
 
 
 #
-def slctvlKL(d,kl):
-    d = copy.deepcopy(d)
+def slctvlKL(d,kl,**kwargs):
+    if("deepcopy" in kwargs):
+        pass
+    else:
+        d = copy.deepcopy(d)
     vl = []
     for i in range(len(kl)):
         k = kl[i]
