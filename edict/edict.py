@@ -2853,4 +2853,15 @@ def mapkK(d,map_func,*map_func_other_args,**kwargs):
     return(nd)
 
 
+#
+def slctvlKL(d,kl):
+    d = copy.deepcopy(d)
+    vl = []
+    for i in range(len(kl)):
+        k = kl[i]
+        v = d[k]
+        vl.append(v)
+    return(vl)
+
+
 
