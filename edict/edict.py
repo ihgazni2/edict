@@ -621,6 +621,30 @@ def kvlist2d(kl,vl):
         v = vl[i]
         d[k] = v
     return(d)
+
+def vlviakl(d,kl):
+    vl = []
+    for i in range(kl.__len__()):
+        k = kl[i]
+        vl.append(d[k])
+    return(vl)
+
+
+def klviavl(d,vl):
+    '''
+        must be 1:1 map
+    '''
+    dkl,dvl = d2kvlist(d)
+    kl = []
+    for i in range(vl.__len__()):
+        v = vl[i]
+        index = dvl.index(v)
+        kl.append(dkl[index])
+    return(kl)
+
+    
+
+
 ####
 def list2d(arr):
     kl = elel.select_evens(arr)
