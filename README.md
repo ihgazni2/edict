@@ -145,6 +145,8 @@
 ├──114. [cond_sort](edict/Images/cond_sort.0.png)  <br>
 ├──115. [kvlist2d](edict/Images/.0.png)  <br>
 ├──116. [d2kvlist](edict/Images/.0.png)  <br>
+├──116. [klviavl](edict/Images/.0.png)  <br>
+├──116. [vlviakl](edict/Images/.0.png)  <br>
 ├──117. [d2list](edict/Images/.0.png)  <br>
 ├──118. [list2d](edict/Images/.0.png)  <br>
 ├──42. [](edict/Images/.0.png)  <br>
