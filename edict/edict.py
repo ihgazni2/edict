@@ -453,6 +453,10 @@ def _get_kdfs(d):
     return(rslt)
 
 
+kpldfs = _get_kdfs
+
+
+
 
 def _get_vndmat(d):
     kt,vn = _d2kvmatrix(d)
