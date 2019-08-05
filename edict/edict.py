@@ -2771,7 +2771,7 @@ def sub_not_algo(d,kl,**kwargs):
     full_kl = list(d.keys())
     nnd = {}
     for k in full_kl:
-        if(not(k in nd)):
+        if(not(k in kl)):
             nnd[k] = nd[k]
         else:
             pass
