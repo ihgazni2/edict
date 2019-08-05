@@ -2737,7 +2737,7 @@ def sub_some(d,*args,**kwargs):
 
 def sub_not_some(d,*args,**kwargs):
     kl = list(args)
-    nd = sub_algo(d,kl,**kwargs)
+    nd = sub_not_algo(d,kl,**kwargs)
     return(nd)
 
 
@@ -2768,8 +2768,9 @@ def sub_not_algo(d,kl,**kwargs):
         nd = copy.deepcopy(d)
     else:
         nd = d
+    full_kl = list(d.keys())
     nnd = {}
-    for k in kl:
+    for k in full_kl:
         if(not(k in nd)):
             nnd[k] = nd[k]
         else:
