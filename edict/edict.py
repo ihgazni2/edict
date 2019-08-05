@@ -2734,6 +2734,13 @@ def sub_some(d,*args,**kwargs):
     nd = sub_algo(d,kl,**kwargs)
     return(nd)
 
+
+def sub_not_some(d,*args,**kwargs):
+    kl = list(args)
+    nd = sub_algo(d,kl,**kwargs)
+    return(nd)
+
+
 def sub_algo(d,kl,**kwargs):
     if('deepcopy' in kwargs):
         deepcopy = kwargs['deepcopy']
@@ -2750,6 +2757,26 @@ def sub_algo(d,kl,**kwargs):
         else:
             pass
     return(nnd)
+
+
+def sub_not_algo(d,kl,**kwargs):
+    if('deepcopy' in kwargs):
+        deepcopy = kwargs['deepcopy']
+    else:
+        deepcopy = True
+    if(deepcopy):
+        nd = copy.deepcopy(d)
+    else:
+        nd = d
+    nnd = {}
+    for k in kl:
+        if(not(k in nd)):
+            nnd[k] = nd[k]
+        else:
+            pass
+    return(nnd)
+
+
 
 
 def sub_value_some(d,*args,**kwargs):
