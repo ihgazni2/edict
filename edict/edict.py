@@ -2923,4 +2923,11 @@ def slctvlKL(d,kl,**kwargs):
     return(vl)
 
 
-
+#
+def kv_forof_l(d,map_func,*args):
+    rslt = []
+    for k in d:
+        v = d[k]
+        ele = map_func(k,v,*args)
+        rslt.append(ele)
+    return(rslt)
