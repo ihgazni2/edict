@@ -2931,3 +2931,43 @@ def kv_forof_l(d,map_func,*args):
         ele = map_func(k,v,*args)
         rslt.append(ele)
     return(rslt)
+
+
+######
+######
+
+
+def get_own_visible_attrs(obj):
+    '''
+        >>> class tst():
+        ...     def __init__(self):
+        ...         self._u = "_u"
+        ...         self.u = "u"
+        ...
+        >>> t = tst()
+        >>>
+        >>> get_own_visible_attrs(t)
+        ['u']
+        >>>
+    '''
+    attrs = get_own_attrs(obj)
+    attrs = elel.cond_select_values_all(attrs,cond_func=lambda ele:not(ele.startswith("_")))
+    return(attrs)
+
+
+class _Orb():
+    pass
+
+
+def d2orb(d):
+    orb = _Orb()
+    for k in d:
+        orb.k = d[k]
+    return(orb)
+
+def orb2d(orb):
+    attrs = get_all_visible_attrs(orb)
+    d = {}
+    for attr in attrs:
+        d[attr] = orb.__getattribute__(attr)
+    return(d)

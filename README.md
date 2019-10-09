@@ -158,7 +158,12 @@
 ├──123. [mapkV](edict/Images/mapkV.0.png)  <br>
 ├──124. [mapkK](edict/Images/mapkK.0.png)  <br>
 ├──125. [slctvlKL](edict/Images/slctvlKL.0.png)  <br>
-├──126. [](edict/Images/.0.png)  <br>
-├──127. [](edict/Images/.0.png)  <br>
+├──126. [d2orb](edict/Images/.0.png)  <br>
+├──127. [orb2d](edict/Images/.0.png)  <br>
 ├──128. [](edict/Images/.0.png)  <br>
 ├──129. [](edict/Images/.0.png)  <br>
+├──130. [](edict/Images/.0.png)  <br>
+├──131. [](edict/Images/.0.png)  <br>
+├──132. [](edict/Images/.0.png)  <br>
+├──133. [](edict/Images/.0.png)  <br>
+
