@@ -2962,7 +2962,7 @@ class _Orb():
 def d2orb(d):
     orb = _Orb()
     for k in d:
-        orb.k = d[k]
+        orb.__setattr__(k,d[k])
     return(orb)
 
 def orb2d(orb):
